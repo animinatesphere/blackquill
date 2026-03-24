@@ -1,0 +1,252 @@
+export const SERVICES = [
+  {
+    id: "web",
+    num: "01",
+    icon: "◻",
+    label: "Website Design & Build",
+    short: "Bespoke sites for the publishing world",
+    desc: "We design and build beautiful, bespoke websites for authors, publishers, literary agencies and other organisations in the worlds of books and publishing. We use custom designs to make our sites easy for clients to manage, capable of evolving over time and exceptional value.",
+    features: [
+      "Custom bespoke design",
+      "CMS so you manage content",
+      "E-commerce ready",
+      "Mobile-first & fast",
+      "SEO-optimised structure",
+      "Six months hosting included",
+    ],
+    color: "#C9A84C",
+  },
+  {
+    id: "brand",
+    num: "02",
+    icon: "◈",
+    label: "Branding & Design",
+    short: "Identity that tells your story",
+    desc: "We develop brand identities for publishing startups and self-published authors, and we design all the supporting marketing materials for any campaign — including print and social media. Your brand should feel as carefully crafted as the books you publish.",
+    features: [
+      "Logo & visual identity",
+      "Brand guidelines",
+      "Book cover design",
+      "Social media assets",
+      "Print & digital collateral",
+      "Author press kits",
+    ],
+    color: "#8B6914",
+  },
+  {
+    id: "ecommerce",
+    num: "03",
+    icon: "▲",
+    label: "E-Commerce Integration",
+    short: "Sell your books directly",
+    desc: "Sell your books, signed editions and merchandise directly from your website. We integrate local Nigerian payment gateways (Paystack, Flutterwave) and international processors so you can reach readers everywhere — and keep more of every sale.",
+    features: [
+      "Paystack & Flutterwave",
+      "International card payments",
+      "Signed books storefront",
+      "Digital downloads",
+      "Inventory management",
+      "Order fulfilment flow",
+    ],
+    color: "#C9A84C",
+  },
+  {
+    id: "training",
+    num: "04",
+    icon: "◉",
+    label: "Training & Support",
+    short: "You're never left alone",
+    desc: "All clients receive hands-on training and as much remote support as required to feel fully comfortable with their new website. Our Site Master plugin lets clients request help directly from within their website — for the full life of the site.",
+    features: [
+      "Hands-on onboarding session",
+      "Video walkthrough library",
+      "In-site help via Site Master",
+      "WhatsApp support line",
+      "Lifetime support commitment",
+      "Monthly check-ins",
+    ],
+    color: "#8B6914",
+  },
+];
+
+export const PROJECTS = [
+  {
+    id: "ayodeji",
+    name: "Ayodeji Ajagbe — Author Site",
+    tags: ["Website", "E-Commerce", "Branding"],
+    stat: "International bestselling author — fully self-managed site",
+    bg: "linear-gradient(135deg,#0f0a04 0%,#1c1408 100%)",
+    accent: "#C9A84C",
+    desc: "A complete author platform for an award-winning international bestseller. Custom design, e-commerce for signed editions and a CMS built for non-technical clients.",
+  },
+  {
+    id: "africa-laureate",
+    name: "Africa Laureate Awards",
+    tags: ["Website", "Branding", "E-Commerce"],
+    stat: "Award ceremony platform serving a Pan-African audience",
+    bg: "linear-gradient(135deg,#08090f 0%,#10152a 100%)",
+    accent: "#8B6914",
+    desc: "A prestigious awards organisation needed a digital home worthy of celebrating Africa's literary giants. Full brand identity, event management and ticketing.",
+  },
+  {
+    id: "publisher-hub",
+    name: "Independent Publisher Hub",
+    tags: ["Website", "E-Commerce", "Training"],
+    stat: "40% increase in direct book sales in 3 months",
+    bg: "linear-gradient(135deg,#080a08 0%,#101a10 100%)",
+    accent: "#C9A84C",
+    desc: "A growing independent publisher needed to move readers from social to direct sales. We built the store, trained the team, and set up automated fulfilment.",
+  },
+  {
+    id: "debut-author",
+    name: "Debut Author Launch",
+    tags: ["Website", "Branding", "E-Commerce"],
+    stat: "Sold out first print run within 48 hours of launch",
+    bg: "linear-gradient(135deg,#0f0804 0%,#201208 100%)",
+    accent: "#8B6914",
+    desc: "Everything a debut author needs: identity, author site, press kit and e-commerce — launched in time for their debut release campaign.",
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    quote:
+      "The team really listened to what I needed and provided a wide range of options and examples. Their expert knowledge of the publishing industry was a huge bonus. My finished website is so straightforward to manage. Highest of recommendations for BlackQuill!",
+    author: "Ayodeji Ajagbe",
+    role: "International Bestselling & Award-Winning Author",
+    initials: "AA",
+    color: "#C9A84C",
+  },
+  {
+    quote:
+      "BlackQuill are true professionals with the skill mix necessary to design, develop and host a website that says excellence. They are extremely patient and created for us a website of which we are extremely proud. We cannot recommend the BlackQuill team more highly.",
+    author: "Africa Laureate Awards Limited",
+    role: "Pan-African Literary Awards Organisation",
+    initials: "AL",
+    color: "#8B6914",
+  },
+];
+
+export const PLANS = [
+  {
+    id: "basic",
+    name: "Basic",
+    price: "₦117,000",
+    tagline: "Perfect for debut authors",
+    featured: false,
+    features: [
+      ". Homepage",
+      " ⁠About the author",
+      " ⁠E-commerce integration",
+      " ⁠Contact page",
+      " ⁠Social media integration",
+      " ⁠Local payment gateway integration",
+      " ⁠Six months hosting",
+      " ⁠Blog",
+    ],
+    cta: "Get started",
+  },
+  {
+    id: "hybrid",
+    name: "Hybrid",
+    price: "₦150,000",
+    tagline: "For established authors expanding their reach",
+    featured: true,
+    features: [
+      "Homepage",
+      "About the author",
+      "E-commerce integration",
+      "Contact page",
+      "Social media integration",
+      "Local and international payment gateway integration",
+      "Six months hosting",
+      "Blog",
+      "Interviews and features page",
+      "Appearance and events page",
+      "Awards and recognition page",
+      "Rich media integration",
+      "book distribution ",
+      "audiobook production",
+      "audiobook distribution",
+    ],
+    cta: "Most popular",
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    price: "₦250,000",
+    tagline: "The complete author platform",
+    featured: false,
+    features: [
+      "Homepage",
+      "About the author",
+      "E-commerce integration",
+      "Contact page",
+      "Social media integration",
+      "Local and international payment gateway integration",
+      "Six months hosting",
+      "Blog",
+      "Interviews and features page",
+      "Appearance and events page",
+      "Awards and recognition page",
+      "Rich media integration",
+      "Giveaway page",
+      "Signed books page",
+      "Advanced Readers Copy page",
+      "Premium design customisation",
+      "AI chatbot for support",
+      "book distribution ",
+      "audiobook production",
+      "audiobook distribution",
+    ],
+    cta: "Go premium",
+  },
+];
+
+export const TICKER_ITEMS = [
+  "Author Websites",
+  "Publisher Platforms",
+  "E-Commerce",
+  "Branding",
+  "Literary Agencies",
+  "Book Launches",
+  "Signed Editions",
+  "Africa Laureate Awards",
+  "Training & Support",
+  "Nigeria & Global",
+];
+
+export const WHY_AUTHOR = [
+  {
+    num: "01",
+    title: "Own your identity online",
+    desc: "Your website is a central hub of authoritative information about you — for readers, journalists and search engines alike. It tells Google and the world precisely who you are.",
+  },
+  {
+    num: "02",
+    title: "Build direct reader relationships",
+    desc: "A website gives you a flexible platform to engage deeply with readers, gather email sign-ups and build relationships you own. Social platforms can change their rules; your website never will.",
+  },
+  {
+    num: "03",
+    title: "Give the media somewhere to point",
+    desc: "When journalists, bloggers and publishers write about you, they need somewhere authoritative to link. Your website is that place — and it works 24/7 without you.",
+  },
+];
+
+export const STATS = [
+  { num: 50, suffix: "+", label: "Authors & publishers served" },
+  { num: 3, suffix: "+", label: "Years of publishing expertise" },
+  { num: 100, suffix: "%", label: "Nigeria-based, globally minded" },
+  { num: 24, suffix: "hr", label: "Support response time" },
+];
+
+export const TEAM = [
+  {
+    name: "The BlackQuill Team",
+    role: "Digital Specialists",
+    bio: "We are Nigeria's only digital agency dedicated exclusively to the book publishing industry. Our team combines deep web development expertise with an authentic passion for literature and publishing.",
+    initials: "BQ",
+    color: "#C9A84C",
+  },
+];
