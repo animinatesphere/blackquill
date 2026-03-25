@@ -489,7 +489,7 @@ export default function Home() {
               }}
             >
               {/* Line 1: Hello, Welcome to */}
-              <span className="block pb-2 pt-[7rem]">
+              <span className="block pb-2 pt-16 sm:pt-24 lg:pt-32">
                 {["Hello,", "Welcome", "to"].map((w, i) => (
                   <span
                     key={i}
@@ -524,7 +524,8 @@ export default function Home() {
                     letterSpacing: "-.01em",
                   }}
                 >
-                  Digital Agency
+                  We provide specialized website solutions for the book
+                  publishing industry
                 </span>
               </span>
             </h1>
@@ -534,8 +535,7 @@ export default function Home() {
           <div
             className="h-rule h-[2px] w-28 mt-8 mb-7"
             style={{
-              background:
-                "linear-gradient(90deg,#FF8C00,rgba(255,140,0,0.15))",
+              background: "linear-gradient(90deg,#FF8C00,rgba(255,140,0,0.15))",
               opacity: 0,
             }}
           />
@@ -550,7 +550,7 @@ export default function Home() {
               opacity: 0,
             }}
           >
-            Nigeria&apos;s{" "}
+            BlackQuill&apos;s{" "}
             <em
               style={{
                 color: "rgba(255,255,255,0.82)",
@@ -558,11 +558,15 @@ export default function Home() {
                 fontWeight: 500,
               }}
             >
-              only agency
+              Digital Agency
             </em>{" "}
-            dedicated to bespoke websites and e-commerce for authors, publishers
-            and literary organisations — based in Nigeria, serving a global
-            client base.
+            is the Nigeria's only agency dedicated to delivering bespoke website
+            and e-cormmerce projects for authors,publishers and literary
+            organisations. Our extensive experience,coupled with active
+            participation in industry events like The Africa Laureate Awards
+            ensures we have a deep understanding of our clients needs . we can
+            move beyond the basics and focus on your strategic objectives .
+            Based in Nigeria ,serving a global client base.
           </p>
 
           {/* CTAs */}
@@ -585,13 +589,13 @@ export default function Home() {
 
           {/* Stats */}
           <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-0 pt-6 mt-2"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 pt-6 mt-2"
             style={{ borderTop: "1px solid rgba(255,140,0,0.14)" }}
           >
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="h-stat pr-6 py-3 border-r last:border-r-0"
+                className="h-stat pr-6 py-3 md:border-r md:last:border-r-0 border-r-0"
                 style={{ borderColor: "rgba(255,140,0,0.1)", opacity: 0 }}
               >
                 <div
@@ -1130,16 +1134,16 @@ export default function Home() {
         <div
           ref={panelRef}
           className="flex h-full items-center"
-          style={{ width: `${SERVICES.length * 88}vw` }}
+          style={{ width: `${SERVICES.length * 100}vw` }}
         >
           {SERVICES.map((s, i) => (
             <div
               key={s.id}
-              className="srv-panel flex-shrink-0 flex items-center justify-center px-8 lg:px-14"
-              style={{ width: "84vw", maxWidth: 860 }}
+              className="srv-panel flex-shrink-0 flex items-center justify-center px-4 sm:px-8 lg:px-14"
+              style={{ width: "100vw", maxWidth: "100%" }}
             >
               <motion.div
-                className="srv-inner relative w-full card p-10 lg:p-14"
+                className="srv-inner relative w-full max-w-[90vw] sm:max-w-none card p-6 sm:p-10 lg:p-14"
                 whileHover={{ borderColor: "rgba(255,140,0,0.42)" }}
                 transition={{ duration: 0.3 }}
               >
@@ -1394,7 +1398,7 @@ export default function Home() {
             {PROJECTS.slice(0, 4).map((p, i) => (
               <motion.div
                 key={p.id}
-                style={{ marginTop: i % 2 === 1 ? 48 : 0 }}
+                className={i % 2 === 1 ? "md:mt-12 mt-0" : ""}
                 initial={{ opacity: 0, y: 72 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}

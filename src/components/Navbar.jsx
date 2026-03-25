@@ -49,15 +49,30 @@ export default function Navbar() {
       >
         <div className="max-w-[1300px] mx-auto px-6 lg:px-10 flex items-center justify-between h-[68px] lg:h-[76px]">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group w-26 h-26">
+          <Link to="/" className="flex items-center gap-3 group">
             {/* quill icon */}
-            <div>
-              <img
-                src={logo}
-                alt=""
-                className="w-[100px] h-[50px] rounded-[3px]"
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path
+                d="M22 2C22 2 14 8 8 18L6 22L10 20C18 14 24 6 22 2Z"
+                fill="none"
+                stroke="#C9A84C"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-            </div>
+              <path
+                d="M8 18C8 18 10 16 12 15"
+                stroke="#C9A84C"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span
+              className="font-display font-bold text-white"
+              style={{ fontSize: "1.4rem", letterSpacing: "-.02em" }}
+            >
+              Black<span style={{ color: "#C9A84C" }}>Quill</span>
+            </span>
           </Link>
 
           {/* Desktop links */}
