@@ -23,14 +23,14 @@ export default function Cursor() {
       if (!ring.current) return
       ring.current.style.width  = '64px'
       ring.current.style.height = '64px'
-      ring.current.style.borderColor = 'rgba(201,168,76,0.8)'
+      ring.current.style.borderColor = 'rgba(255,140,0,0.8)'
       if (dot.current) dot.current.style.opacity = '0'
     }
     const shrink = () => {
       if (!ring.current) return
       ring.current.style.width  = '36px'
       ring.current.style.height = '36px'
-      ring.current.style.borderColor = 'rgba(201,168,76,0.5)'
+      ring.current.style.borderColor = 'rgba(255,140,0,0.5)'
       if (dot.current) dot.current.style.opacity = '1'
     }
 

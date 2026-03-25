@@ -97,13 +97,13 @@ export function Ticker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS]
   return (
     <div className="marquee-wrap py-[13px]"
-      style={{ background: 'rgba(7,7,9,0.9)', borderTop: '1px solid rgba(201,168,76,0.1)', borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
+      style={{ background: 'rgba(0,0,0,0.9)', borderTop: '1px solid rgba(255,140,0,0.1)', borderBottom: '1px solid rgba(255,140,0,0.1)' }}>
       <div className="marquee-track">
         {items.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-5 mx-6 font-mono text-[10px] font-medium tracking-[0.2em] uppercase whitespace-nowrap"
-            style={{ color: 'rgba(201,168,76,0.4)' }}>
+            style={{ color: 'rgba(255,140,0,0.4)' }}>
             {item}
-            <span style={{ color: '#C9A84C', fontSize: 7 }}>✦</span>
+            <span style={{ color: '#FF8C00', fontSize: 7 }}>✦</span>
           </span>
         ))}
       </div>
@@ -134,13 +134,13 @@ export function PageHero({ tag, title, subtitle }) {
 
   return (
     <section ref={ref} className="relative pt-36 pb-24 px-6 lg:px-10 overflow-hidden"
-      style={{ background: 'radial-gradient(ellipse 70% 60% at 20% 60%, rgba(201,168,76,0.06) 0%, transparent 60%), #0B0B0F' }}>
+      style={{ background: 'radial-gradient(ellipse 70% 60% at 20% 60%, rgba(255,140,0,0.06) 0%, transparent 60%), #000000' }}>
       {/* grid */}
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-50" />
 
       {/* decorative large glyph */}
       <div className="ph-line absolute right-6 lg:right-16 top-24 font-display font-bold pointer-events-none select-none opacity-0"
-        style={{ fontSize: 'clamp(8rem,18vw,18rem)', color: 'rgba(201,168,76,0.04)', lineHeight: 1, letterSpacing: '-.04em' }}>
+        style={{ fontSize: 'clamp(8rem,18vw,18rem)', color: 'rgba(255,140,0,0.04)', lineHeight: 1, letterSpacing: '-.04em' }}>
         &ldquo;
       </div>
 
@@ -148,7 +148,7 @@ export function PageHero({ tag, title, subtitle }) {
         <div className="ph-line" style={{ opacity: 0 }}>
           <span className="tag">{tag}</span>
         </div>
-        <div className="ph-line-decoration h-[1px] w-16 mt-4 mb-6" style={{ background: 'rgba(201,168,76,0.4)', opacity: 0 }} />
+        <div className="ph-line-decoration h-[1px] w-16 mt-4 mb-6" style={{ background: 'rgba(255,140,0,0.4)', opacity: 0 }} />
         <h1
           className="h-display text-white ph-line mb-6"
           style={{ opacity: 0 }}
@@ -177,7 +177,7 @@ export function ProjectCard({ project }) {
     >
       {/* subtle grid */}
       <div className="absolute inset-0"
-        style={{ backgroundImage: 'linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg,rgba(201,168,76,0.04) 1px, transparent 1px)', backgroundSize: '56px 56px' }} />
+        style={{ backgroundImage: 'linear-gradient(rgba(255,140,0,0.04) 1px, transparent 1px), linear-gradient(90deg,rgba(255,140,0,0.04) 1px, transparent 1px)', backgroundSize: '56px 56px' }} />
 
       {/* gold corner accent */}
       <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none"
@@ -187,14 +187,14 @@ export function ProjectCard({ project }) {
 
       {/* dark overlay */}
       <motion.div className="absolute inset-0"
-        variants={{ rest: { background: 'rgba(11,11,15,0)' }, hover: { background: 'rgba(11,11,15,0.78)' } }}
+        variants={{ rest: { background: 'rgba(0,0,0,0)' }, hover: { background: 'rgba(0,0,0,0.78)' } }}
         transition={{ duration: 0.38 }} />
 
       {/* tags */}
       <div className="absolute top-5 left-5 flex flex-wrap gap-1.5">
         {tags.map(t => (
           <span key={t} className="font-mono text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-sm"
-            style={{ background: 'rgba(11,11,15,0.7)', color: 'rgba(201,168,76,0.7)', border: '1px solid rgba(201,168,76,0.2)' }}>
+            style={{ background: 'rgba(0,0,0,0.7)', color: 'rgba(255,140,0,0.7)', border: '1px solid rgba(255,140,0,0.2)' }}>
             {t}
           </span>
         ))}
@@ -202,7 +202,7 @@ export function ProjectCard({ project }) {
 
       {/* arrow */}
       <motion.div className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center font-bold text-sm rounded-sm"
-        style={{ background: accent, color: '#0B0B0F' }}
+        style={{ background: accent, color: '#000000' }}
         variants={{ rest: { opacity: 0, scale: 0.7 }, hover: { opacity: 1, scale: 1 } }}
         transition={{ duration: 0.3 }}>
         ↗
@@ -226,16 +226,16 @@ export function TestimonialCard({ quote, author, role, color = '#C9A84C', initia
   return (
     <div className="card p-8 flex flex-col gap-5 h-full">
       {/* open quote */}
-      <div className="font-display text-5xl leading-none" style={{ color: 'rgba(201,168,76,0.25)' }}>&ldquo;</div>
+      <div className="font-display text-5xl leading-none" style={{ color: 'rgba(255,140,0,0.25)' }}>&ldquo;</div>
       <p className="text-white/55 leading-relaxed flex-1" style={{ fontSize: '0.95rem', lineHeight: 1.8 }}>{quote}</p>
-      <div className="flex items-center gap-3 pt-5" style={{ borderTop: '1px solid rgba(201,168,76,0.1)' }}>
+      <div className="flex items-center gap-3 pt-5" style={{ borderTop: '1px solid rgba(255,140,0,0.1)' }}>
         <div className="w-10 h-10 rounded-sm flex items-center justify-center font-bold text-sm shrink-0"
-          style={{ background: color, color: '#0B0B0F' }}>
+          style={{ background: color, color: '#000000' }}>
           {initials}
         </div>
         <div>
           <div className="text-white text-sm font-semibold">{author}</div>
-          <div className="font-mono text-[10px] tracking-wider" style={{ color: 'rgba(201,168,76,0.55)' }}>{role}</div>
+          <div className="font-mono text-[10px] tracking-wider" style={{ color: 'rgba(255,140,0,0.55)' }}>{role}</div>
         </div>
       </div>
     </div>
@@ -255,29 +255,29 @@ export function PlanCard({ plan }) {
     >
       {featured && (
         <div className="absolute top-0 left-0 right-0 h-[2px]"
-          style={{ background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)' }} />
+          style={{ background: 'linear-gradient(90deg, transparent, #FF8C00, transparent)' }} />
       )}
       {featured && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <span className="font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-full"
-            style={{ background: '#C9A84C', color: '#0B0B0F' }}>Most Popular</span>
+            style={{ background: '#FF8C00', color: '#000000' }}>Most Popular</span>
         </div>
       )}
 
       <div>
         <span className="tag mb-2">{name}</span>
-        <div className="font-display font-bold text-white mt-1" style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.03em', color: featured ? '#C9A84C' : '#F5F0E8' }}>
+        <div className="font-display font-bold text-white mt-1" style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.03em', color: featured ? '#FF8C00' : '#FFFFFF' }}>
           {price}
         </div>
         <p className="text-white/35 text-sm mt-2">{tagline}</p>
       </div>
 
-      <hr style={{ border: 'none', borderTop: '1px solid rgba(201,168,76,0.12)' }} />
+      <hr style={{ border: 'none', borderTop: '1px solid rgba(255,140,0,0.12)' }} />
 
       <ul className="flex flex-col gap-3 flex-1">
         {features.map(f => (
           <li key={f} className="flex items-start gap-3 text-sm text-white/60">
-            <span style={{ color: '#C9A84C', marginTop: 2, fontSize: 10, flexShrink: 0 }}>✦</span>
+            <span style={{ color: '#FF8C00', marginTop: 2, fontSize: 10, flexShrink: 0 }}>✦</span>
             {f}
           </li>
         ))}
@@ -295,29 +295,29 @@ export function PlanCard({ plan }) {
 ──────────────────────────────────────── */
 export function AccordionItem({ num, label, short, desc, features, color, isOpen, onToggle }) {
   return (
-    <div style={{ borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
+    <div style={{ borderBottom: '1px solid rgba(255,140,0,0.1)' }}>
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-6 px-1 gap-4 text-left group"
       >
         <div className="flex items-center gap-5 min-w-0">
-          <span className="font-mono text-[10px] shrink-0" style={{ color: 'rgba(201,168,76,0.35)' }}>{num}</span>
+          <span className="font-mono text-[10px] shrink-0" style={{ color: 'rgba(255,140,0,0.35)' }}>{num}</span>
           <div className="min-w-0">
             <div className="font-display font-bold text-white transition-colors duration-250 group-hover:text-gold"
-              style={{ fontSize: 'clamp(1.1rem,2vw,1.8rem)', letterSpacing: '-.02em', color: isOpen ? color : '#F5F0E8' }}>
+              style={{ fontSize: 'clamp(1.1rem,2vw,1.8rem)', letterSpacing: '-.02em', color: isOpen ? color : '#FFFFFF' }}>
               {label}
             </div>
-            {!isOpen && <div className="font-mono text-[10px] tracking-wide mt-0.5" style={{ color: 'rgba(201,168,76,0.4)' }}>{short}</div>}
+            {!isOpen && <div className="font-mono text-[10px] tracking-wide mt-0.5" style={{ color: 'rgba(255,140,0,0.4)' }}>{short}</div>}
           </div>
         </div>
 
         <motion.div
           className="shrink-0 w-8 h-8 rounded-sm flex items-center justify-center"
-          animate={{ background: isOpen ? color : 'rgba(201,168,76,0.08)', borderColor: isOpen ? color : 'rgba(201,168,76,0.2)' }}
-          style={{ border: '1px solid rgba(201,168,76,0.2)' }}
+          animate={{ background: isOpen ? color : 'rgba(255,140,0,0.08)', borderColor: isOpen ? color : 'rgba(255,140,0,0.2)' }}
+          style={{ border: '1px solid rgba(255,140,0,0.2)' }}
         >
           <motion.span className="block font-mono font-bold text-xs"
-            animate={{ color: isOpen ? '#0B0B0F' : '#C9A84C' }}>
+            animate={{ color: isOpen ? '#000000' : '#FF8C00' }}>
             {isOpen ? '−' : '+'}
           </motion.span>
         </motion.div>
@@ -334,7 +334,7 @@ export function AccordionItem({ num, label, short, desc, features, color, isOpen
           <ul className="flex flex-wrap gap-2">
             {features.map(f => (
               <li key={f} className="font-mono text-[10px] tracking-wide px-3 py-1.5 rounded-sm"
-                style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.15)', color: 'rgba(201,168,76,0.7)' }}>
+                style={{ background: 'rgba(255,140,0,0.07)', border: '1px solid rgba(255,140,0,0.15)', color: 'rgba(255,140,0,0.7)' }}>
                 {f}
               </li>
             ))}

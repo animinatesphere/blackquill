@@ -17,14 +17,14 @@ export default function Projects() {
     <PageTransition>
       <PageHero
         tag="Our Work"
-        title="We're proud of our<br/><em style='color:#C9A84C;font-style:italic;'>body of work.</em>"
+        title="We're proud of our<br/><em style='color:#FF8C00;font-style:italic;'>body of work.</em>"
         subtitle="Here are some of our new and notable projects — authors, publishers and literary organisations we've had the privilege of working with."
       />
 
       <Ticker />
 
       {/* ── FILTER + GRID ── */}
-      <section className="py-20 px-6 lg:px-10" style={{ background: '#0B0B0F' }}>
+      <section className="py-20 px-6 lg:px-10" style={{ background: '#000000' }}>
         <div className="max-w-[1300px] mx-auto">
           {/* filter tabs */}
           <Reveal className="mb-14">
@@ -35,11 +35,11 @@ export default function Projects() {
                   onClick={() => setActiveTag(tag)}
                   className="px-5 py-2 rounded-sm font-mono text-[11px] tracking-[0.18em] uppercase transition-all duration-250"
                   animate={{
-                    background: activeTag === tag ? '#C9A84C' : 'rgba(201,168,76,0.06)',
-                    color: activeTag === tag ? '#0B0B0F' : 'rgba(201,168,76,0.5)',
-                    borderColor: activeTag === tag ? '#C9A84C' : 'rgba(201,168,76,0.15)',
+                    background: activeTag === tag ? '#FF8C00' : 'rgba(255,140,0,0.06)',
+                    color: activeTag === tag ? '#000000' : 'rgba(255,140,0,0.5)',
+                    borderColor: activeTag === tag ? '#FF8C00' : 'rgba(255,140,0,0.15)',
                   }}
-                  style={{ border: '1px solid rgba(201,168,76,0.15)' }}
+                  style={{ border: '1px solid rgba(255,140,0,0.15)' }}
                   whileTap={{ scale: 0.95 }}
                 >{tag}</motion.button>
               ))}
@@ -62,7 +62,7 @@ export default function Projects() {
           </motion.div>
 
           {filtered.length === 0 && (
-            <div className="text-center py-24 font-mono text-sm" style={{ color: 'rgba(201,168,76,0.35)' }}>
+            <div className="text-center py-24 font-mono text-sm" style={{ color: 'rgba(255,140,0,0.35)' }}>
               No projects in this category yet.
             </div>
           )}
@@ -70,7 +70,7 @@ export default function Projects() {
       </section>
 
       {/* ── RESULTS BAND ── */}
-      <section className="py-20 px-6 lg:px-10" style={{ background: '#C9A84C' }}>
+      <section className="py-20 px-6 lg:px-10" style={{ background: '#FF8C00' }}>
         <div className="max-w-[1300px] mx-auto">
           <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
@@ -80,7 +80,7 @@ export default function Projects() {
             ].map((s, i) => (
               <div key={i}>
                 <div className="font-display font-bold italic text-ink" style={{ fontSize: 'clamp(2.5rem,6vw,4.5rem)', letterSpacing: '-.04em', lineHeight: 1 }}>{s.stat}</div>
-                <div className="font-mono text-xs uppercase tracking-widest mt-2" style={{ color: 'rgba(11,11,15,0.5)' }}>{s.label}</div>
+                <div className="font-mono text-xs uppercase tracking-widest mt-2" style={{ color: 'rgba(0,0,0,0.5)' }}>{s.label}</div>
               </div>
             ))}
           </StaggerReveal>
@@ -88,12 +88,12 @@ export default function Projects() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-28 px-6 lg:px-10" style={{ background: '#0B0B0F' }}>
+      <section className="py-28 px-6 lg:px-10" style={{ background: '#000000' }}>
         <div className="max-w-[1300px] mx-auto">
           <Reveal className="mb-14">
             <span className="tag mb-4">Client Voices</span>
-            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-            <h2 className="h-xl text-white">What our clients<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>say</em></h2>
+            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+            <h2 className="h-xl text-white">What our clients<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>say</em></h2>
           </Reveal>
           <StaggerReveal className="grid md:grid-cols-2 gap-6">
             {TESTIMONIALS.map((t, i) => <TestimonialCard key={i} {...t} />)}
@@ -103,12 +103,12 @@ export default function Projects() {
 
       {/* ── CTA ── */}
       <section className="py-24 px-6 lg:px-10 text-center relative overflow-hidden"
-        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 60%), #0d0d11' }}>
+        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,140,0,0.07) 0%, transparent 60%), #000000' }}>
         <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
         <Reveal className="relative z-10 max-w-2xl mx-auto">
           <span className="tag mb-4 text-center">Your Project</span>
-          <div className="h-[1px] w-12 mx-auto mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-          <h2 className="h-xl text-white mb-6">Your brand<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>could be next</em></h2>
+          <div className="h-[1px] w-12 mx-auto mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+          <h2 className="h-xl text-white mb-6">Your brand<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>could be next</em></h2>
           <Link to="/contact" className="btn-gold inline-flex px-10 py-4">Start a conversation →</Link>
         </Reveal>
       </section>

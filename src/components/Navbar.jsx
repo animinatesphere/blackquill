@@ -40,10 +40,10 @@ export default function Navbar() {
       <nav
         className="bq-nav fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? "rgba(11,11,15,0.96)" : "transparent",
+          background: scrolled ? "rgba(0,0,0,0.96)" : "transparent",
           backdropFilter: scrolled ? "blur(22px)" : "none",
           borderBottom: scrolled
-            ? "1px solid rgba(201,168,76,0.1)"
+            ? "1px solid rgba(255,140,0,0.1)"
             : "1px solid transparent",
         }}
       >
@@ -70,8 +70,8 @@ export default function Navbar() {
                 style={{
                   color:
                     location.pathname === l.to
-                      ? "#C9A84C"
-                      : "rgba(245,240,232,0.5)",
+                      ? "#FF8C00"
+                      : "rgba(255,140,0,0.5)",
                 }}
               >
                 {l.label}
@@ -79,7 +79,7 @@ export default function Navbar() {
                   className="absolute left-0 -bottom-0.5 h-[1px] transition-all duration-300"
                   style={{
                     width: location.pathname === l.to ? "100%" : "0%",
-                    background: "#C9A84C",
+                    background: "#FF8C00",
                   }}
                 />
               </Link>
@@ -144,8 +144,8 @@ export default function Navbar() {
             className="fixed top-0 right-0 bottom-0 z-50 flex flex-col pt-24 pb-10 px-8 gap-1 lg:hidden"
             style={{
               width: "min(300px,90vw)",
-              background: "#0f0f14",
-              borderLeft: "1px solid rgba(201,168,76,0.15)",
+              background: "#000000",
+              borderLeft: "1px solid rgba(255,140,0,0.15)",
             }}
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -165,8 +165,8 @@ export default function Navbar() {
                   style={{
                     fontSize: "clamp(1.5rem,6vw,1.9rem)",
                     letterSpacing: "-.02em",
-                    borderColor: "rgba(201,168,76,0.1)",
-                    color: location.pathname === l.to ? "#C9A84C" : "#F5F0E8",
+                    borderColor: "rgba(255,140,0,0.1)",
+                    color: location.pathname === l.to ? "#FF8C00" : "#FFFFFF",
                   }}
                 >
                   {l.label}

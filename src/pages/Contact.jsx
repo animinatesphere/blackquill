@@ -90,15 +90,15 @@ export default function Contact() {
     border: "1px solid rgba(201,168,76,0.15)",
     borderRadius: 2,
     padding: "14px 16px",
-    color: "#F5F0E8",
+    color: "#FFFFFF",
     fontSize: 14,
     fontFamily: "DM Sans, sans-serif",
     outline: "none",
     transition: "border-color 0.25s, background 0.25s",
   };
   const focusStyle = {
-    borderColor: "rgba(201,168,76,0.55)",
-    background: "rgba(201,168,76,0.04)",
+    borderColor: "rgba(255,140,0,0.55)",
+    background: "rgba(255,140,0,0.04)",
   };
   const errStyle = { borderColor: "rgba(255,80,80,0.5)" };
 
@@ -110,7 +110,7 @@ export default function Contact() {
         className="relative pt-36 pb-16 px-6 lg:px-10 overflow-hidden"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 20% 60%, rgba(201,168,76,0.06) 0%, transparent 60%), #0B0B0F",
+            "radial-gradient(ellipse 70% 60% at 20% 60%, rgba(255,140,0,0.06) 0%, transparent 60%), #000000",
         }}
       >
         <div className="absolute inset-0 grid-bg pointer-events-none opacity-50" />
@@ -120,7 +120,7 @@ export default function Contact() {
           className="absolute right-0 lg:right-16 top-20 pointer-events-none select-none"
           style={{
             fontSize: "clamp(10rem,22vw,24rem)",
-            color: "rgba(201,168,76,0.03)",
+            color: "rgba(255,140,0,0.03)",
             lineHeight: 1,
           }}
         >
@@ -133,7 +133,7 @@ export default function Contact() {
           </div>
           <div
             className="ct-deco h-[1.5px] w-16 mt-4 mb-6"
-            style={{ background: "rgba(201,168,76,0.45)", opacity: 0 }}
+            style={{ background: "rgba(255,140,0,0.45)", opacity: 0 }}
           />
           <h1
             className="h-display text-white ct-line mb-5"
@@ -141,7 +141,7 @@ export default function Contact() {
           >
             Let's build
             <br />
-            <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+            <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
               something together.
             </em>
           </h1>
@@ -160,7 +160,7 @@ export default function Contact() {
       {/* ── MAIN CONTENT ── */}
       <section
         className="py-20 px-6 lg:px-10"
-        style={{ background: "#0B0B0F" }}
+        style={{ background: "#000000" }}
       >
         <div className="max-w-[1300px] mx-auto grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-24 items-start">
           {/* ── FORM ── */}
@@ -180,7 +180,7 @@ export default function Contact() {
                     <span className="tag mb-2">Start the conversation</span>
                     <div
                       className="h-[1px] w-12 mt-3"
-                      style={{ background: "rgba(201,168,76,0.4)" }}
+                      style={{ background: "rgba(255,140,0,0.4)" }}
                     />
                   </div>
 
@@ -280,7 +280,7 @@ export default function Contact() {
                       style={inputBase}
                       onFocus={(e) => Object.assign(e.target.style, focusStyle)}
                       onBlur={(e) => {
-                        e.target.style.borderColor = "rgba(201,168,76,0.15)";
+                        e.target.style.borderColor = "rgba(255,140,0,0.15)";
                         e.target.style.background = "rgba(255,255,255,0.03)";
                       }}
                     />
@@ -304,18 +304,18 @@ export default function Contact() {
                           animate={{
                             background:
                               form.service === s
-                                ? "#C9A84C"
-                                : "rgba(201,168,76,0.06)",
+                                ? "#FF8C00"
+                                : "rgba(255,140,0,0.06)",
                             color:
                               form.service === s
-                                ? "#0B0B0F"
-                                : "rgba(201,168,76,0.55)",
+                                ? "#000000"
+                                : "rgba(255,140,0,0.55)",
                             borderColor:
                               form.service === s
-                                ? "#C9A84C"
-                                : "rgba(201,168,76,0.15)",
+                                ? "#FF8C00"
+                                : "rgba(255,140,0,0.15)",
                           }}
-                          style={{ border: "1px solid rgba(201,168,76,0.15)" }}
+                          style={{ border: "1px solid rgba(255,140,0,0.15)" }}
                           whileTap={{ scale: 0.95 }}
                         >
                           {s}
@@ -342,18 +342,18 @@ export default function Contact() {
                           animate={{
                             background:
                               form.budget === b
-                                ? "#C9A84C"
-                                : "rgba(201,168,76,0.06)",
+                                ? "#FF8C00"
+                                : "rgba(255,140,0,0.06)",
                             color:
                               form.budget === b
-                                ? "#0B0B0F"
-                                : "rgba(201,168,76,0.55)",
+                                ? "#000000"
+                                : "rgba(255,140,0,0.55)",
                             borderColor:
                               form.budget === b
-                                ? "#C9A84C"
-                                : "rgba(201,168,76,0.15)",
+                                ? "#FF8C00"
+                                : "rgba(255,140,0,0.15)",
                           }}
-                          style={{ border: "1px solid rgba(201,168,76,0.15)" }}
+                          style={{ border: "1px solid rgba(255,140,0,0.15)" }}
                           whileTap={{ scale: 0.95 }}
                         >
                           {b}
@@ -386,7 +386,7 @@ export default function Contact() {
                       onBlur={(e) => {
                         e.target.style.borderColor = errors.message
                           ? "rgba(255,80,80,0.5)"
-                          : "rgba(201,168,76,0.15)";
+                          : "rgba(255,140,0,0.15)";
                         e.target.style.background = "rgba(255,255,255,0.03)";
                       }}
                     />
@@ -426,7 +426,7 @@ export default function Contact() {
                             }}
                             className="inline-block w-4 h-4 border-2 rounded-full"
                             style={{
-                              borderColor: "#0B0B0F",
+                              borderColor: "#000000",
                               borderTopColor: "transparent",
                             }}
                           />
@@ -472,12 +472,12 @@ export default function Contact() {
                       delay: 0.15,
                     }}
                     className="w-16 h-16 rounded-sm flex items-center justify-center"
-                    style={{ background: "#C9A84C" }}
+                    style={{ background: "#FF8C00" }}
                   >
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                       <motion.path
                         d="M6 14L11.5 19.5L22 9"
-                        stroke="#0B0B0F"
+                        stroke="#000000"
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -528,7 +528,7 @@ export default function Contact() {
             <div className="card p-7">
               <div
                 className="h-[1px] w-8 mb-5"
-                style={{ background: "rgba(201,168,76,0.4)" }}
+                style={{ background: "rgba(255,140,0,0.4)" }}
               />
               <h4
                 className="font-display font-bold text-white text-xl mb-5"
@@ -542,27 +542,27 @@ export default function Contact() {
                   className="flex items-center gap-3 text-sm group transition-colors duration-200"
                   style={{ color: "rgba(245,240,232,0.45)" }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#C9A84C")
+                    (e.currentTarget.style.color = "#FF8C00")
                   }
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.color = "rgba(245,240,232,0.45)")
                   }
                 >
-                  <span style={{ color: "#C9A84C", fontSize: 10 }}>✦</span>
+                  <span style={{ color: "#FF8C00", fontSize: 10 }}>✦</span>
                   hello@blackquill.ng
                 </a>
                 <div
                   className="flex items-center gap-3 text-sm"
                   style={{ color: "rgba(245,240,232,0.45)" }}
                 >
-                  <span style={{ color: "#C9A84C", fontSize: 10 }}>✦</span>
+                  <span style={{ color: "#FF8C00", fontSize: 10 }}>✦</span>
                   Nigeria — serving globally
                 </div>
                 <div
                   className="flex items-center gap-3 text-sm"
                   style={{ color: "rgba(245,240,232,0.45)" }}
                 >
-                  <span style={{ color: "#C9A84C", fontSize: 10 }}>✦</span>
+                  <span style={{ color: "#FF8C00", fontSize: 10 }}>✦</span>
                   Response within 24 hours
                 </div>
               </div>
@@ -572,7 +572,7 @@ export default function Contact() {
             <div className="card p-7">
               <div
                 className="h-[1px] w-8 mb-5"
-                style={{ background: "rgba(201,168,76,0.4)" }}
+                style={{ background: "rgba(255,140,0,0.4)" }}
               />
               <h4
                 className="font-display font-bold text-white text-xl mb-5"
@@ -596,7 +596,7 @@ export default function Contact() {
                   >
                     <span
                       style={{
-                        color: "#C9A84C",
+                        color: "#FF8C00",
                         fontSize: 9,
                         marginTop: 4,
                         flexShrink: 0,
@@ -614,13 +614,13 @@ export default function Contact() {
             <div
               className="card p-7"
               style={{
-                background: "rgba(201,168,76,0.05)",
-                borderColor: "rgba(201,168,76,0.2)",
+                background: "rgba(255,140,0,0.05)",
+                borderColor: "rgba(255,140,0,0.2)",
               }}
             >
               <div
                 className="font-display text-4xl leading-none mb-4"
-                style={{ color: "rgba(201,168,76,0.3)" }}
+                style={{ color: "rgba(255,140,0,0.3)" }}
               >
                 &ldquo;
               </div>
@@ -630,7 +630,7 @@ export default function Contact() {
               <div className="flex items-center gap-3">
                 <div
                   className="w-8 h-8 rounded-sm flex items-center justify-center font-bold text-xs shrink-0"
-                  style={{ background: "#C9A84C", color: "#0B0B0F" }}
+                  style={{ background: "#FF8C00", color: "#000000" }}
                 >
                   AA
                 </div>
@@ -640,7 +640,7 @@ export default function Contact() {
                   </div>
                   <div
                     className="font-mono text-[10px]"
-                    style={{ color: "rgba(201,168,76,0.5)" }}
+                    style={{ color: "rgba(255,140,0,0.5)" }}
                   >
                     International Bestselling Author
                   </div>
@@ -672,8 +672,8 @@ export default function Contact() {
       <section
         className="py-16 px-6 lg:px-10"
         style={{
-          background: "#0d0d11",
-          borderTop: "1px solid rgba(201,168,76,0.08)",
+          background: "#000000",
+          borderTop: "1px solid rgba(255,140,0,0.08)",
         }}
       >
         <div className="max-w-[1300px] mx-auto">
@@ -706,7 +706,7 @@ export default function Contact() {
                 </div>
                 <div
                   className="font-mono text-[10px] tracking-wide"
-                  style={{ color: "rgba(201,168,76,0.4)" }}
+                  style={{ color: "rgba(255,140,0,0.4)" }}
                 >
                   {c.desc}
                 </div>

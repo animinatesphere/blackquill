@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "#070709",
-        borderTop: "1px solid rgba(201,168,76,0.12)",
+        background: "#000000",
+        borderTop: "1px solid rgba(255,140,0,0.12)",
       }}
     >
       <div className="max-w-[1300px] mx-auto px-6 lg:px-10 pt-16 pb-0 grid md:grid-cols-4 gap-12">
@@ -33,16 +33,16 @@ export default function Footer() {
                 href="#"
                 className="w-8 h-8 flex items-center justify-center text-[10px] font-bold rounded-sm transition-all duration-250"
                 style={{
-                  border: "1px solid rgba(201,168,76,0.2)",
-                  color: "rgba(201,168,76,0.5)",
+                  border: "1px solid rgba(255,140,0,0.2)",
+                  color: "rgba(255,140,0,0.5)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#C9A84C";
-                  e.currentTarget.style.color = "#C9A84C";
+                  e.currentTarget.style.borderColor = "#FF8C00";
+                  e.currentTarget.style.color = "#FF8C00";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(201,168,76,0.2)";
-                  e.currentTarget.style.color = "rgba(201,168,76,0.5)";
+                  e.currentTarget.style.borderColor = "rgba(255,140,0,0.2)";
+                  e.currentTarget.style.color = "rgba(255,140,0,0.5)";
                 }}
               >
                 {s}
@@ -55,7 +55,7 @@ export default function Footer() {
         <div>
           <h4
             className="font-mono text-[10px] tracking-[0.2em] uppercase mb-5"
-            style={{ color: "rgba(201,168,76,0.5)" }}
+            style={{ color: "rgba(255,140,0,0.5)" }}
           >
             Services
           </h4>
@@ -70,7 +70,7 @@ export default function Footer() {
                 <Link
                   to="/services"
                   className="text-sm transition-colors duration-200 hover:text-gold"
-                  style={{ color: "rgba(245,240,232,0.4)" }}
+                  style={{ color: "rgba(255,255,255,0.4)" }}
                 >
                   {l}
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
         <div>
           <h4
             className="font-mono text-[10px] tracking-[0.2em] uppercase mb-5"
-            style={{ color: "rgba(201,168,76,0.5)" }}
+            style={{ color: "rgba(255,140,0,0.5)" }}
           >
             Company
           </h4>
@@ -98,7 +98,7 @@ export default function Footer() {
                 <Link
                   to={to}
                   className="text-sm transition-colors duration-200 hover:text-gold"
-                  style={{ color: "rgba(245,240,232,0.4)" }}
+                  style={{ color: "rgba(255,255,255,0.4)" }}
                 >
                   {l}
                 </Link>
@@ -111,13 +111,13 @@ export default function Footer() {
         <div>
           <h4
             className="font-mono text-[10px] tracking-[0.2em] uppercase mb-5"
-            style={{ color: "rgba(201,168,76,0.5)" }}
+            style={{ color: "rgba(255,140,0,0.5)" }}
           >
             Contact
           </h4>
           <ul
             className="flex flex-col gap-3 text-sm"
-            style={{ color: "rgba(245,240,232,0.4)" }}
+            style={{ color: "rgba(255,255,255,0.4)" }}
           >
             <li>
               <a
@@ -129,7 +129,7 @@ export default function Footer() {
               </a>
             </li>
             <li>Nigeria — serving globally</li>
-            <li className="text-xs" style={{ color: "rgba(201,168,76,0.5)" }}>
+            <li className="text-xs" style={{ color: "rgba(255,140,0,0.5)" }}>
               Response within 24 hours
             </li>
           </ul>
@@ -146,7 +146,7 @@ export default function Footer() {
       <hr className="divider max-w-[1300px] mx-auto mt-14" />
 
       <div className="max-w-[1300px] mx-auto px-6 lg:px-10 py-6 flex flex-wrap justify-between items-center gap-3">
-        <span className="text-xs" style={{ color: "rgba(245,240,232,0.18)" }}>
+        <span className="text-xs" style={{ color: "rgba(255,255,255,0.18)" }}>
           © 2025 BlackQuill Digital Agency. All Rights Reserved. Nigeria.
         </span>
         <div className="flex gap-6">
@@ -155,12 +155,12 @@ export default function Footer() {
               key={l}
               href="#"
               className="text-xs transition-colors duration-200"
-              style={{ color: "rgba(245,240,232,0.18)" }}
+              style={{ color: "rgba(255,255,255,0.18)" }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "rgba(201,168,76,0.7)")
+                (e.currentTarget.style.color = "rgba(255,140,0,0.7)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "rgba(245,240,232,0.18)")
+                (e.currentTarget.style.color = "rgba(255,255,255,0.18)")
               }
             >
               {l}

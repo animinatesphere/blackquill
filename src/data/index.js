@@ -14,7 +14,7 @@ export const SERVICES = [
       "SEO-optimised structure",
       "Six months hosting included",
     ],
-    color: "#C9A84C",
+    color: "#FF8C00",
   },
   {
     id: "brand",
@@ -31,7 +31,7 @@ export const SERVICES = [
       "Print & digital collateral",
       "Author press kits",
     ],
-    color: "#8B6914",
+    color: "#CC7000",
   },
   {
     id: "ecommerce",
@@ -48,7 +48,7 @@ export const SERVICES = [
       "Inventory management",
       "Order fulfilment flow",
     ],
-    color: "#C9A84C",
+    color: "#FF8C00",
   },
   {
     id: "training",
@@ -65,7 +65,7 @@ export const SERVICES = [
       "Lifetime support commitment",
       "Monthly check-ins",
     ],
-    color: "#8B6914",
+    color: "#CC7000",
   },
 ];
 
@@ -75,8 +75,8 @@ export const PROJECTS = [
     name: "Ayodeji Ajagbe — Author Site",
     tags: ["Website", "E-Commerce", "Branding"],
     stat: "International bestselling author — fully self-managed site",
-    bg: "linear-gradient(135deg,#0f0a04 0%,#1c1408 100%)",
-    accent: "#C9A84C",
+    bg: "linear-gradient(135deg,#000000 0%,#1a0d00 100%)",
+    accent: "#FF8C00",
     desc: "A complete author platform for an award-winning international bestseller. Custom design, e-commerce for signed editions and a CMS built for non-technical clients.",
   },
   {
@@ -84,8 +84,8 @@ export const PROJECTS = [
     name: "Africa Laureate Awards",
     tags: ["Website", "Branding", "E-Commerce"],
     stat: "Award ceremony platform serving a Pan-African audience",
-    bg: "linear-gradient(135deg,#08090f 0%,#10152a 100%)",
-    accent: "#8B6914",
+    bg: "linear-gradient(135deg,#000000 0%,#0a0520 100%)",
+    accent: "#CC7000",
     desc: "A prestigious awards organisation needed a digital home worthy of celebrating Africa's literary giants. Full brand identity, event management and ticketing.",
   },
   {
@@ -93,8 +93,8 @@ export const PROJECTS = [
     name: "Independent Publisher Hub",
     tags: ["Website", "E-Commerce", "Training"],
     stat: "40% increase in direct book sales in 3 months",
-    bg: "linear-gradient(135deg,#080a08 0%,#101a10 100%)",
-    accent: "#C9A84C",
+    bg: "linear-gradient(135deg,#000000 0%,#001a00 100%)",
+    accent: "#FF8C00",
     desc: "A growing independent publisher needed to move readers from social to direct sales. We built the store, trained the team, and set up automated fulfilment.",
   },
   {
@@ -102,8 +102,8 @@ export const PROJECTS = [
     name: "Debut Author Launch",
     tags: ["Website", "Branding", "E-Commerce"],
     stat: "Sold out first print run within 48 hours of launch",
-    bg: "linear-gradient(135deg,#0f0804 0%,#201208 100%)",
-    accent: "#8B6914",
+    bg: "linear-gradient(135deg,#000000 0%,#201000 100%)",
+    accent: "#CC7000",
     desc: "Everything a debut author needs: identity, author site, press kit and e-commerce — launched in time for their debut release campaign.",
   },
 ];
@@ -115,7 +115,7 @@ export const TESTIMONIALS = [
     author: "Ayodeji Ajagbe",
     role: "International Bestselling & Award-Winning Author",
     initials: "AA",
-    color: "#C9A84C",
+    color: "#FF8C00",
   },
   {
     quote:
@@ -123,7 +123,7 @@ export const TESTIMONIALS = [
     author: "Africa Laureate Awards Limited",
     role: "Pan-African Literary Awards Organisation",
     initials: "AL",
-    color: "#8B6914",
+    color: "#CC7000",
   },
 ];
 
@@ -247,6 +247,6 @@ export const TEAM = [
     role: "Digital Specialists",
     bio: "We are Nigeria's only digital agency dedicated exclusively to the book publishing industry. Our team combines deep web development expertise with an authentic passion for literature and publishing.",
     initials: "BQ",
-    color: "#C9A84C",
+    color: "#FF8C00",
   },
 ];

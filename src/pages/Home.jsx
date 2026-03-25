@@ -36,7 +36,7 @@ function Particle({ x, y, delay, size }) {
       style={{
         width: size,
         height: size,
-        background: "#C9A84C",
+        background: "#FF8C00",
         left: x,
         top: y,
       }}
@@ -293,12 +293,12 @@ export default function Home() {
       <section
         ref={heroRef}
         className="relative overflow-hidden"
-        style={{ height: "100vh", minHeight: 660, background: "#050507" }}
+        style={{ height: "100vh", minHeight: 660, background: "#000000" }}
       >
         {/* ── Wipe overlay ── */}
         <div
           className="h-wipe absolute inset-0 z-40"
-          style={{ background: "#0B0B0F" }}
+          style={{ background: "#000000" }}
         />
 
         {/* ── Background video ── */}
@@ -328,9 +328,9 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background: `
-                radial-gradient(ellipse 75% 55% at 18% 38%, rgba(201,168,76,0.13) 0%, transparent 62%),
-                radial-gradient(ellipse 55% 45% at 82% 65%, rgba(201,168,76,0.07) 0%, transparent 55%),
-                linear-gradient(155deg, #0f0c08 0%, #0B0B0F 45%, #08080c 100%)
+                radial-gradient(ellipse 75% 55% at 18% 38%, rgba(255,140,0,0.13) 0%, transparent 62%),
+                radial-gradient(ellipse 55% 45% at 82% 65%, rgba(255,140,0,0.07) 0%, transparent 55%),
+                linear-gradient(155deg, #0f0c08 0%, #000000 45%, #08080c 100%)
               `,
               display: vidLoaded ? "none" : "block",
             }}
@@ -343,7 +343,7 @@ export default function Home() {
                 style={{
                   left: `${4 + i * 7}%`,
                   width: 1,
-                  background: `rgba(201,168,76,${0.03 + (i % 4) * 0.015})`,
+                  background: `rgba(255,140,0,${0.03 + (i % 4) * 0.015})`,
                   transformOrigin: "top",
                 }}
                 animate={{ scaleY: [0.35, 1, 0.35], opacity: [0.2, 0.7, 0.2] }}
@@ -366,8 +366,8 @@ export default function Home() {
               style={{
                 width: 82,
                 height: 82,
-                background: "#C9A84C",
-                color: "#0B0B0F",
+                background: "#FF8C00",
+                color: "#000000",
                 fontSize: 10,
                 letterSpacing: ".18em",
                 left: vCursor.x,
@@ -391,14 +391,14 @@ export default function Home() {
           style={{
             opacity: overlayOp,
             background:
-              "linear-gradient(105deg, rgba(11,11,15,0.96) 0%, rgba(11,11,15,0.65) 50%, rgba(11,11,15,0.28) 100%)",
+              "linear-gradient(105deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.28) 100%)",
           }}
         />
         {/* bottom fade to site bg */}
         <div
           className="absolute bottom-0 left-0 right-0 z-10 h-56 pointer-events-none"
           style={{
-            background: "linear-gradient(to top, #0B0B0F 0%, transparent 100%)",
+            background: "linear-gradient(to top, #000000 0%, transparent 100%)",
           }}
         />
         {/* top fade */}
@@ -406,7 +406,7 @@ export default function Home() {
           className="absolute top-0 left-0 right-0 z-10 h-28 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, #0B0B0F 0%, transparent 100%)",
+              "linear-gradient(to bottom, #000000 0%, transparent 100%)",
           }}
         />
 
@@ -428,8 +428,8 @@ export default function Home() {
             left: 24,
             width: 44,
             height: 44,
-            borderTop: "1.5px solid rgba(201,168,76,0.4)",
-            borderLeft: "1.5px solid rgba(201,168,76,0.4)",
+            borderTop: "1.5px solid rgba(255,140,0,0.4)",
+            borderLeft: "1.5px solid rgba(255,140,0,0.4)",
           }}
         />
         <div
@@ -439,8 +439,8 @@ export default function Home() {
             right: 24,
             width: 44,
             height: 44,
-            borderBottom: "1.5px solid rgba(201,168,76,0.4)",
-            borderRight: "1.5px solid rgba(201,168,76,0.4)",
+            borderBottom: "1.5px solid rgba(255,140,0,0.4)",
+            borderRight: "1.5px solid rgba(255,140,0,0.4)",
           }}
         />
 
@@ -453,8 +453,8 @@ export default function Home() {
           <div
             className="h-badge inline-flex items-center gap-2 mb-6 sm:mb-8 px-3 sm:px-4 py-2 self-start"
             style={{
-              border: "1px solid rgba(201,168,76,0.3)",
-              background: "rgba(201,168,76,0.07)",
+              border: "1px solid rgba(255,140,0,0.3)",
+              background: "rgba(255,140,0,0.07)",
               borderRadius: 2,
               backdropFilter: "blur(10px)",
               opacity: 0,
@@ -463,16 +463,16 @@ export default function Home() {
             <span className="relative flex h-2 w-2">
               <span
                 className="ping-anim absolute inline-flex h-full w-full rounded-full opacity-70"
-                style={{ background: "#C9A84C" }}
+                style={{ background: "#FF8C00" }}
               />
               <span
                 className="relative inline-flex rounded-full h-2 w-2"
-                style={{ background: "#C9A84C" }}
+                style={{ background: "#FF8C00" }}
               />
             </span>
             <span
               className="font-mono font-medium tracking-[0.22em] uppercase"
-              style={{ fontSize: 10, color: "#C9A84C" }}
+              style={{ fontSize: 10, color: "#FF8C00" }}
             >
               Nigeria&apos;s Publishing Web Specialists
             </span>
@@ -517,7 +517,7 @@ export default function Home() {
                   className="h-word inline-block"
                   style={{
                     opacity: 0,
-                    color: "rgba(245,240,232,0.45)",
+                    color: "rgba(255,255,255,0.45)",
                     fontSize: "clamp(1.1rem,3vw,4.8rem)",
                     fontStyle: "italic",
                     fontWeight: 400,
@@ -535,7 +535,7 @@ export default function Home() {
             className="h-rule h-[2px] w-28 mt-8 mb-7"
             style={{
               background:
-                "linear-gradient(90deg,#C9A84C,rgba(201,168,76,0.15))",
+                "linear-gradient(90deg,#FF8C00,rgba(255,140,0,0.15))",
               opacity: 0,
             }}
           />
@@ -546,14 +546,14 @@ export default function Home() {
             style={{
               fontSize: "clamp(0.97rem,1.5vw,1.12rem)",
               lineHeight: 1.86,
-              color: "rgba(245,240,232,0.5)",
+              color: "rgba(255,255,255,0.5)",
               opacity: 0,
             }}
           >
             Nigeria&apos;s{" "}
             <em
               style={{
-                color: "rgba(245,240,232,0.82)",
+                color: "rgba(255,255,255,0.82)",
                 fontStyle: "normal",
                 fontWeight: 500,
               }}
@@ -586,20 +586,20 @@ export default function Home() {
           {/* Stats */}
           <div
             className="grid grid-cols-2 md:grid-cols-4 gap-0 pt-6 mt-2"
-            style={{ borderTop: "1px solid rgba(201,168,76,0.14)" }}
+            style={{ borderTop: "1px solid rgba(255,140,0,0.14)" }}
           >
             {STATS.map((s) => (
               <div
                 key={s.label}
                 className="h-stat pr-6 py-3 border-r last:border-r-0"
-                style={{ borderColor: "rgba(201,168,76,0.1)", opacity: 0 }}
+                style={{ borderColor: "rgba(255,140,0,0.1)", opacity: 0 }}
               >
                 <div
                   className="font-display font-bold italic"
                   style={{
                     fontSize: "clamp(1.7rem,3.2vw,2.5rem)",
                     letterSpacing: "-.04em",
-                    color: "#C9A84C",
+                    color: "#FF8C00",
                     lineHeight: 1,
                   }}
                 >
@@ -615,7 +615,7 @@ export default function Home() {
                     fontSize: 9,
                     letterSpacing: ".17em",
                     textTransform: "uppercase",
-                    color: "rgba(245,240,232,0.26)",
+                    color: "rgba(255,255,255,0.26)",
                   }}
                 >
                   {s.label}
@@ -636,7 +636,7 @@ export default function Home() {
               fontSize: 9,
               letterSpacing: ".28em",
               textTransform: "uppercase",
-              color: "rgba(201,168,76,0.45)",
+              color: "rgba(255,140,0,0.45)",
             }}
           >
             Scroll
@@ -645,7 +645,7 @@ export default function Home() {
             style={{
               width: 1,
               height: 52,
-              background: "linear-gradient(to bottom,#C9A84C,transparent)",
+              background: "linear-gradient(to bottom,#FF8C00,transparent)",
               transformOrigin: "top",
             }}
             animate={{ scaleY: [0, 1, 0] }}
@@ -662,14 +662,14 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="relative py-32 px-6 lg:px-10 overflow-hidden"
-        style={{ background: "#0B0B0F" }}
+        style={{ background: "#000000" }}
       >
         {/* large ghost text */}
         <motion.div
           className="absolute right-0 top-0 bottom-0 flex items-center font-display font-bold select-none pointer-events-none overflow-hidden"
           style={{
             fontSize: "clamp(14rem,24vw,28rem)",
-            color: "rgba(201,168,76,0.025)",
+            color: "rgba(255,140,0,0.025)",
             lineHeight: 1,
             letterSpacing: "-.04em",
             paddingRight: "2%",
@@ -690,8 +690,8 @@ export default function Home() {
               style={{
                 aspectRatio: "3/4",
                 maxHeight: 540,
-                background: "linear-gradient(140deg,#120f08,#1c1508)",
-                border: "1px solid rgba(201,168,76,0.14)",
+                background: "linear-gradient(140deg,#000000,#000000)",
+                border: "1px solid rgba(255,140,0,0.14)",
               }}
               whileHover={{ scale: 1.015 }}
               transition={{ duration: 0.55 }}
@@ -713,13 +713,13 @@ export default function Home() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(140deg,#120f08,#1c1508)",
+                    background: "linear-gradient(140deg,#000000,#000000)",
                   }}
                 />
               )}
               <div
                 className="absolute inset-0"
-                style={{ background: "rgba(11,11,15,0.55)" }}
+                style={{ background: "rgba(0,0,0,0.55)" }}
               />
               {/* vertical decorative lines */}
               {Array.from({ length: 6 }).map((_, i) => (
@@ -729,7 +729,7 @@ export default function Home() {
                   style={{
                     left: `${15 + i * 14}%`,
                     width: 1,
-                    background: "rgba(201,168,76,0.07)",
+                    background: "rgba(255,140,0,0.07)",
                     transformOrigin: "top",
                   }}
                   animate={{ scaleY: [0.5, 1, 0.5] }}
@@ -759,14 +759,14 @@ export default function Home() {
                   <path
                     d="M50 4C50 4 30 18 18 42L14 52L24 48C42 36 56 16 50 4Z"
                     fill="none"
-                    stroke="#C9A84C"
+                    stroke="#FF8C00"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                   <path
                     d="M18 42C18 42 24 36 30 33"
-                    stroke="#C9A84C"
+                    stroke="#FF8C00"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />
@@ -780,18 +780,18 @@ export default function Home() {
                   </div>
                   <div
                     className="font-mono tracking-[0.26em] uppercase"
-                    style={{ fontSize: 10, color: "#C9A84C" }}
+                    style={{ fontSize: 10, color: "#FF8C00" }}
                   >
                     Digital Agency
                   </div>
                 </div>
                 <div
                   className="h-[1px] w-16"
-                  style={{ background: "rgba(201,168,76,0.38)" }}
+                  style={{ background: "rgba(255,140,0,0.38)" }}
                 />
                 <div
                   className="font-mono text-center tracking-widest uppercase leading-loose"
-                  style={{ fontSize: 10, color: "rgba(201,168,76,0.48)" }}
+                  style={{ fontSize: 10, color: "rgba(255,140,0,0.48)" }}
                 >
                   Nigeria&apos;s Only
                   <br />
@@ -807,8 +807,8 @@ export default function Home() {
                 style={{
                   width: 26,
                   height: 26,
-                  borderTop: "1px solid rgba(201,168,76,0.38)",
-                  borderLeft: "1px solid rgba(201,168,76,0.38)",
+                  borderTop: "1px solid rgba(255,140,0,0.38)",
+                  borderLeft: "1px solid rgba(255,140,0,0.38)",
                 }}
               />
               <div
@@ -816,8 +816,8 @@ export default function Home() {
                 style={{
                   width: 26,
                   height: 26,
-                  borderBottom: "1px solid rgba(201,168,76,0.38)",
-                  borderRight: "1px solid rgba(201,168,76,0.38)",
+                  borderBottom: "1px solid rgba(255,140,0,0.38)",
+                  borderRight: "1px solid rgba(255,140,0,0.38)",
                 }}
               />
             </motion.div>
@@ -825,7 +825,7 @@ export default function Home() {
             {/* Stat badge */}
             <motion.div
               className="absolute -bottom-7 -right-4 lg:-right-10 p-5 z-20"
-              style={{ background: "#C9A84C", borderRadius: 2 }}
+              style={{ background: "#FF8C00", borderRadius: 2 }}
               initial={{ opacity: 0, y: 28, scale: 0.82 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
@@ -847,7 +847,7 @@ export default function Home() {
               </div>
               <div
                 className="font-mono tracking-widest uppercase mt-1"
-                style={{ fontSize: 9, color: "rgba(11,11,15,0.58)" }}
+                style={{ fontSize: 9, color: "rgba(0,0,0,0.58)" }}
               >
                 Happy clients
               </div>
@@ -857,8 +857,8 @@ export default function Home() {
             <motion.div
               className="absolute -top-5 -right-3 lg:-right-8 flex items-center gap-3 p-4 z-20"
               style={{
-                background: "rgba(11,11,15,0.94)",
-                border: "1px solid rgba(201,168,76,0.28)",
+                background: "rgba(0,0,0,0.94)",
+                border: "1px solid rgba(255,140,0,0.28)",
                 borderRadius: 2,
                 backdropFilter: "blur(14px)",
               }}
@@ -875,7 +875,7 @@ export default function Home() {
               <div>
                 <div
                   className="font-mono tracking-widest uppercase"
-                  style={{ fontSize: 9, color: "#C9A84C" }}
+                  style={{ fontSize: 9, color: "#FF8C00" }}
                 >
                   Partner
                 </div>
@@ -894,14 +894,14 @@ export default function Home() {
             <span className="tag mb-3">Who We Are</span>
             <div
               className="h-[1px] w-12 mt-3 mb-7"
-              style={{ background: "rgba(201,168,76,0.4)" }}
+              style={{ background: "rgba(255,140,0,0.4)" }}
             />
             <h2 className="h-xl text-white mb-7" style={{ lineHeight: 0.94 }}>
               <Words text="The only agency built" className="block" delay={0} />
               <span className="block mt-1">
                 <Words text="for the" delay={0.3} />{" "}
                 <motion.em
-                  style={{ color: "#C9A84C", fontStyle: "italic" }}
+                  style={{ color: "#FF8C00", fontStyle: "italic" }}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -944,7 +944,7 @@ export default function Home() {
 
             <div
               className="grid grid-cols-3 gap-3 mt-10 pt-10"
-              style={{ borderTop: "1px solid rgba(201,168,76,0.1)" }}
+              style={{ borderTop: "1px solid rgba(255,140,0,0.1)" }}
             >
               {[
                 { icon: "✍", label: "Authors" },
@@ -955,7 +955,7 @@ export default function Home() {
                   <div style={{ fontSize: 20, marginBottom: 6 }}>{p.icon}</div>
                   <div
                     className="font-mono tracking-widest uppercase"
-                    style={{ fontSize: 9, color: "rgba(201,168,76,0.48)" }}
+                    style={{ fontSize: 9, color: "rgba(255,140,0,0.48)" }}
                   >
                     {p.label}
                   </div>
@@ -971,7 +971,7 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="py-28 px-6 lg:px-10 relative overflow-hidden"
-        style={{ background: "#0d0d11" }}
+        style={{ background: "#000000" }}
       >
         {/* Why section video background */}
         <video
@@ -988,12 +988,12 @@ export default function Home() {
         {!vid5Loaded && (
           <div
             className="absolute inset-0"
-            style={{ background: "#0d0d11", zIndex: 0 }}
+            style={{ background: "#000000", zIndex: 0 }}
           />
         )}
         <div
           className="absolute inset-0"
-          style={{ background: "rgba(13,13,17,0.75)", zIndex: 0 }}
+          style={{ background: "rgba(0,0,0,0.75)", zIndex: 0 }}
         />
         {/* diagonal background rules */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -1004,7 +1004,7 @@ export default function Home() {
               style={{
                 left: `${8 + i * 14}%`,
                 width: 1,
-                background: `linear-gradient(to bottom,transparent,rgba(201,168,76,${0.04 + i * 0.01}),transparent)`,
+                background: `linear-gradient(to bottom,transparent,rgba(255,140,0,${0.04 + i * 0.01}),transparent)`,
                 transform: "rotate(6deg)",
                 transformOrigin: "top",
               }}
@@ -1024,11 +1024,11 @@ export default function Home() {
             <span className="tag mb-3">For Authors</span>
             <div
               className="h-[1px] w-12 mt-3 mb-6"
-              style={{ background: "rgba(201,168,76,0.4)" }}
+              style={{ background: "rgba(255,140,0,0.4)" }}
             />
             <h2 className="h-xl text-white max-w-2xl">
               <Words text="Why does an author need" />{" "}
-              <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+              <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
                 a website?
               </em>
             </h2>
@@ -1054,7 +1054,7 @@ export default function Home() {
                   className="absolute top-4 right-6 font-display font-bold italic pointer-events-none select-none"
                   style={{
                     fontSize: "6rem",
-                    color: "rgba(201,168,76,0.06)",
+                    color: "rgba(255,140,0,0.06)",
                     lineHeight: 1,
                     letterSpacing: "-.04em",
                   }}
@@ -1069,19 +1069,19 @@ export default function Home() {
                   whileHover={{ opacity: 1 }}
                   style={{
                     background:
-                      "radial-gradient(ellipse at 25% 25%, rgba(201,168,76,0.09) 0%, transparent 70%)",
+                      "radial-gradient(ellipse at 25% 25%, rgba(255,140,0,0.09) 0%, transparent 70%)",
                   }}
                 />
 
                 <div
                   className="font-mono tracking-widest uppercase mb-4 relative z-10"
-                  style={{ fontSize: 10, color: "rgba(201,168,76,0.44)" }}
+                  style={{ fontSize: 10, color: "rgba(255,140,0,0.44)" }}
                 >
                   {w.num}
                 </div>
                 <div
                   className="h-[1px] w-8 mb-5 relative z-10"
-                  style={{ background: "rgba(201,168,76,0.32)" }}
+                  style={{ background: "rgba(255,140,0,0.32)" }}
                 />
                 <h3
                   className="font-display font-bold text-white text-xl mb-3 relative z-10"
@@ -1096,7 +1096,7 @@ export default function Home() {
                 {/* bottom accent line */}
                 <motion.div
                   className="absolute bottom-0 left-0 h-[2px]"
-                  style={{ background: "#C9A84C" }}
+                  style={{ background: "#FF8C00" }}
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.4 }}
@@ -1113,7 +1113,7 @@ export default function Home() {
       <section
         ref={pinRef}
         className="relative overflow-hidden"
-        style={{ background: "#0B0B0F", height: "100vh" }}
+        style={{ background: "#000000", height: "100vh" }}
       >
         {/* labels */}
         <div className="absolute top-8 left-6 lg:left-10 z-20">
@@ -1121,7 +1121,7 @@ export default function Home() {
         </div>
         <div
           className="absolute top-8 right-6 lg:right-10 z-20 font-mono tracking-widest uppercase"
-          style={{ fontSize: 9, color: "rgba(201,168,76,0.3)" }}
+          style={{ fontSize: 9, color: "rgba(255,140,0,0.3)" }}
         >
           ← Scroll to explore →
         </div>
@@ -1140,7 +1140,7 @@ export default function Home() {
             >
               <motion.div
                 className="srv-inner relative w-full card p-10 lg:p-14"
-                whileHover={{ borderColor: "rgba(201,168,76,0.42)" }}
+                whileHover={{ borderColor: "rgba(255,140,0,0.42)" }}
                 transition={{ duration: 0.3 }}
               >
                 {/* big ghost num */}
@@ -1148,7 +1148,7 @@ export default function Home() {
                   className="absolute top-5 right-8 font-display font-bold italic pointer-events-none select-none"
                   style={{
                     fontSize: "clamp(5rem,11vw,10rem)",
-                    color: "rgba(201,168,76,0.045)",
+                    color: "rgba(255,140,0,0.045)",
                     letterSpacing: "-.04em",
                     lineHeight: 1,
                   }}
@@ -1160,7 +1160,7 @@ export default function Home() {
                   <span className="tag mb-3">{s.tag}</span>
                   <div
                     className="h-[1px] w-12 mt-3 mb-6"
-                    style={{ background: "rgba(201,168,76,0.38)" }}
+                    style={{ background: "rgba(255,140,0,0.38)" }}
                   />
                   <h3
                     className="font-display font-bold text-white mb-5"
@@ -1185,9 +1185,9 @@ export default function Home() {
                         className="font-mono tracking-wide px-3 py-1.5 rounded-sm"
                         style={{
                           fontSize: 10,
-                          background: "rgba(201,168,76,0.07)",
-                          border: "1px solid rgba(201,168,76,0.14)",
-                          color: "rgba(201,168,76,0.68)",
+                          background: "rgba(255,140,0,0.07)",
+                          border: "1px solid rgba(255,140,0,0.14)",
+                          color: "rgba(255,140,0,0.68)",
                         }}
                       >
                         {f}
@@ -1211,7 +1211,7 @@ export default function Home() {
           className="absolute bottom-0 left-0 right-0 h-[1px]"
           style={{
             background:
-              "linear-gradient(90deg,transparent,rgba(201,168,76,0.28),transparent)",
+              "linear-gradient(90deg,transparent,rgba(255,140,0,0.28),transparent)",
           }}
         />
       </section>
@@ -1221,20 +1221,20 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="relative overflow-hidden"
-        style={{ background: "#080808" }}
+        style={{ background: "#000000" }}
       >
         <div className="max-w-[1300px] mx-auto px-6 lg:px-10 pt-24 pb-12">
           <Reveal>
             <span className="tag mb-3">Our Story</span>
             <div
               className="h-[1px] w-12 mt-3 mb-6"
-              style={{ background: "rgba(201,168,76,0.4)" }}
+              style={{ background: "rgba(255,140,0,0.4)" }}
             />
             <div className="flex flex-wrap items-end justify-between gap-6">
               <h2 className="h-xl text-white">
                 <Words text="Built by people who" />
                 <span className="block mt-1">
-                  <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+                  <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
                     love books.
                   </em>
                 </span>
@@ -1292,7 +1292,7 @@ export default function Home() {
                 <path
                   d="M50 4C50 4 30 18 18 42L14 52L24 48C42 36 56 16 50 4Z"
                   fill="none"
-                  stroke="#C9A84C"
+                  stroke="#FF8C00"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                 />
@@ -1309,13 +1309,13 @@ export default function Home() {
           <div
             className="absolute inset-y-0 left-0 w-28"
             style={{
-              background: "linear-gradient(to right,#080808,transparent)",
+              background: "linear-gradient(to right,#000000,transparent)",
             }}
           />
           <div
             className="absolute inset-y-0 right-0 w-28"
             style={{
-              background: "linear-gradient(to left,#080808,transparent)",
+              background: "linear-gradient(to left,#000000,transparent)",
             }}
           />
 
@@ -1343,7 +1343,7 @@ export default function Home() {
               </div>
               <div
                 className="font-mono tracking-widest uppercase"
-                style={{ fontSize: 11, color: "rgba(201,168,76,0.75)" }}
+                style={{ fontSize: 11, color: "rgba(255,140,0,0.75)" }}
               >
                 — Ayodeji Ajagbe, International Bestselling Author
               </div>
@@ -1359,7 +1359,7 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="py-28 px-6 lg:px-10"
-        style={{ background: "#0B0B0F" }}
+        style={{ background: "#000000" }}
       >
         <div className="max-w-[1300px] mx-auto">
           <Reveal className="flex flex-wrap items-end justify-between gap-4 mb-16">
@@ -1367,12 +1367,12 @@ export default function Home() {
               <span className="tag mb-3">Our Work</span>
               <div
                 className="h-[1px] w-12 mt-3 mb-6"
-                style={{ background: "rgba(201,168,76,0.4)" }}
+                style={{ background: "rgba(255,140,0,0.4)" }}
               />
               <h2 className="h-xl text-white">
                 <Words text="We're proud of our" />
                 <span className="block mt-1">
-                  <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+                  <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
                     body of work.
                   </em>
                 </span>
@@ -1416,7 +1416,7 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="relative py-20 px-6 lg:px-10 overflow-hidden"
-        style={{ background: "#C9A84C" }}
+        style={{ background: "#FF8C00" }}
       >
         {Array.from({ length: 9 }).map((_, i) => (
           <div
@@ -1425,7 +1425,7 @@ export default function Home() {
             style={{
               left: `${i * 12}%`,
               width: 1,
-              background: "rgba(11,11,15,0.05)",
+              background: "rgba(0,0,0,0.05)",
             }}
           />
         ))}
@@ -1457,7 +1457,7 @@ export default function Home() {
                   className="font-mono mt-2"
                   style={{
                     fontSize: 11,
-                    color: "rgba(11,11,15,0.52)",
+                    color: "rgba(0,0,0,0.52)",
                     lineHeight: 1.5,
                   }}
                 >
@@ -1474,7 +1474,7 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="py-28 px-6 lg:px-10"
-        style={{ background: "#0d0d11" }}
+        style={{ background: "#000000" }}
       >
         <div className="max-w-[1300px] mx-auto">
           <Reveal className="flex flex-wrap items-end justify-between gap-4 mb-14">
@@ -1482,12 +1482,12 @@ export default function Home() {
               <span className="tag mb-3">In Detail</span>
               <div
                 className="h-[1px] w-12 mt-3 mb-6"
-                style={{ background: "rgba(201,168,76,0.4)" }}
+                style={{ background: "rgba(255,140,0,0.4)" }}
               />
               <h2 className="h-xl text-white">
                 How BlackQuill
                 <br />
-                <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+                <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
                   can help you
                 </em>
               </h2>
@@ -1501,7 +1501,7 @@ export default function Home() {
             </Mag>
           </Reveal>
           <Reveal>
-            <div style={{ borderTop: "1px solid rgba(201,168,76,0.1)" }}>
+            <div style={{ borderTop: "1px solid rgba(255,140,0,0.1)" }}>
               {SERVICES.map((s) => (
                 <AccordionItem
                   key={s.id}
@@ -1520,7 +1520,7 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="py-28 px-6 lg:px-10 relative overflow-hidden"
-        style={{ background: "#0B0B0F" }}
+        style={{ background: "#000000" }}
       >
         {/* Testimonials video background */}
         <video
@@ -1537,19 +1537,19 @@ export default function Home() {
         {!vid6Loaded && (
           <div
             className="absolute inset-0"
-            style={{ background: "#0B0B0F", zIndex: 0 }}
+            style={{ background: "#000000", zIndex: 0 }}
           />
         )}
         <div
           className="absolute inset-0"
-          style={{ background: "rgba(11,11,15,0.8)", zIndex: 0 }}
+          style={{ background: "rgba(0,0,0,0.8)", zIndex: 0 }}
         />
         {/* giant bg quote */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center font-display font-bold pointer-events-none select-none"
           style={{
             fontSize: "clamp(20rem,38vw,42rem)",
-            color: "rgba(201,168,76,0.016)",
+            color: "rgba(255,140,0,0.016)",
             lineHeight: 1,
             letterSpacing: "-.04em",
           }}
@@ -1566,12 +1566,12 @@ export default function Home() {
             <span className="tag mb-3">Client Voices</span>
             <div
               className="h-[1px] w-12 mt-3 mb-6"
-              style={{ background: "rgba(201,168,76,0.4)" }}
+              style={{ background: "rgba(255,140,0,0.4)" }}
             />
             <h2 className="h-xl text-white">
               What our clients
               <br />
-              <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+              <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
                 say about us
               </em>
             </h2>
@@ -1589,7 +1589,7 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         className="relative overflow-hidden flex items-center"
-        style={{ background: "#070709", minHeight: "62vh" }}
+        style={{ background: "#000000", minHeight: "62vh" }}
       >
         {/* bg video */}
         <div className="absolute inset-0 z-0">
@@ -1607,7 +1607,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 85% 70% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 65%), rgba(7,7,9,0.82)",
+                "radial-gradient(ellipse 85% 70% at 50% 50%, rgba(255,140,0,0.1) 0%, transparent 65%), rgba(7,7,9,0.82)",
             }}
           />
         </div>
@@ -1627,8 +1627,8 @@ export default function Home() {
           style={{
             width: 50,
             height: 50,
-            borderTop: "1.5px solid rgba(201,168,76,0.38)",
-            borderLeft: "1.5px solid rgba(201,168,76,0.38)",
+            borderTop: "1.5px solid rgba(255,140,0,0.38)",
+            borderLeft: "1.5px solid rgba(255,140,0,0.38)",
           }}
         />
         <div
@@ -1636,8 +1636,8 @@ export default function Home() {
           style={{
             width: 50,
             height: 50,
-            borderBottom: "1.5px solid rgba(201,168,76,0.38)",
-            borderRight: "1.5px solid rgba(201,168,76,0.38)",
+            borderBottom: "1.5px solid rgba(255,140,0,0.38)",
+            borderRight: "1.5px solid rgba(255,140,0,0.38)",
           }}
         />
 
@@ -1651,7 +1651,7 @@ export default function Home() {
             <span className="tag mb-3 block text-center">Start Today</span>
             <div
               className="h-[1px] w-12 mt-3 mb-9 mx-auto"
-              style={{ background: "rgba(201,168,76,0.4)" }}
+              style={{ background: "rgba(255,140,0,0.4)" }}
             />
 
             <h2
@@ -1664,7 +1664,7 @@ export default function Home() {
             >
               Ready to build
               <br />
-              <em style={{ color: "#C9A84C", fontStyle: "italic" }}>
+              <em style={{ color: "#FF8C00", fontStyle: "italic" }}>
                 your author platform?
               </em>
             </h2>
@@ -1701,7 +1701,7 @@ export default function Home() {
             {/* trust signals */}
             <div
               className="flex flex-wrap items-center justify-center gap-8 pt-10"
-              style={{ borderTop: "1px solid rgba(201,168,76,0.1)" }}
+              style={{ borderTop: "1px solid rgba(255,140,0,0.1)" }}
             >
               {[
                 "✦  No templates — 100% bespoke",
@@ -1711,7 +1711,7 @@ export default function Home() {
                 <span
                   key={t}
                   className="font-mono tracking-widest uppercase"
-                  style={{ fontSize: 9, color: "rgba(201,168,76,0.45)" }}
+                  style={{ fontSize: 9, color: "rgba(255,140,0,0.45)" }}
                 >
                   {t}
                 </span>

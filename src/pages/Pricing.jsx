@@ -19,19 +19,19 @@ export default function Pricing() {
     <PageTransition>
       <PageHero
         tag="Pricing"
-        title="Simple, transparent<br/><em style='color:#C9A84C;font-style:italic;'>pricing.</em>"
+        title="Simple, transparent<br/><em style='color:#FF8C00;font-style:italic;'>pricing.</em>"
         subtitle="Choose the plan that fits where you are in your publishing journey. Every plan includes six months hosting and hands-on training."
       />
 
       <Ticker />
 
       {/* ── PLANS ── */}
-      <section className="py-24 px-6 lg:px-10" style={{ background: '#0B0B0F' }}>
+      <section className="py-24 px-6 lg:px-10" style={{ background: '#000000' }}>
         <div className="max-w-[1300px] mx-auto">
           <Reveal className="mb-16 text-center">
             <span className="tag mb-4 text-center">Choose Your Plan</span>
-            <div className="h-[1px] w-12 mx-auto mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-            <h2 className="h-xl text-white">The right plan<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>for every author</em></h2>
+            <div className="h-[1px] w-12 mx-auto mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+            <h2 className="h-xl text-white">The right plan<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>for every author</em></h2>
             <p className="text-white/38 text-base leading-relaxed mt-5 max-w-md mx-auto font-light">
               All prices are fixed. All plans include six months hosting and a hands-on training session.
             </p>
@@ -43,7 +43,7 @@ export default function Pricing() {
 
           {/* all plans note */}
           <Reveal className="mt-10 text-center">
-            <p className="font-mono text-[11px] tracking-wide" style={{ color: 'rgba(201,168,76,0.4)' }}>
+            <p className="font-mono text-[11px] tracking-wide" style={{ color: 'rgba(255,140,0,0.4)' }}>
               All plans include · Six months hosting · Hands-on training session · Site Master support plugin · Mobile-first responsive design
             </p>
           </Reveal>
@@ -51,12 +51,12 @@ export default function Pricing() {
       </section>
 
       {/* ── COMPARISON TABLE ── */}
-      <section className="py-16 pb-28 px-6 lg:px-10" style={{ background: '#0d0d11' }}>
+      <section className="py-16 pb-28 px-6 lg:px-10" style={{ background: '#000000' }}>
         <div className="max-w-[1300px] mx-auto">
           <Reveal className="mb-12">
             <span className="tag mb-4">Compare Plans</span>
-            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-            <h2 className="h-lg text-white">What's included<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>in each plan</em></h2>
+            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+            <h2 className="h-lg text-white">What's included<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>in each plan</em></h2>
           </Reveal>
 
           <Reveal>
@@ -64,9 +64,9 @@ export default function Pricing() {
               <table className="w-full text-sm" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
                 <thead>
                   <tr>
-                    <th className="text-left font-mono text-[10px] tracking-widest uppercase pb-5 pr-8" style={{ color: 'rgba(201,168,76,0.4)' }}>Feature</th>
+                    <th className="text-left font-mono text-[10px] tracking-widest uppercase pb-5 pr-8" style={{ color: 'rgba(255,140,0,0.4)' }}>Feature</th>
                     {PLANS.map(p => (
-                      <th key={p.id} className="text-center pb-5 px-4 font-display font-bold text-white" style={{ fontSize: '1.1rem', letterSpacing: '-.02em', color: p.featured ? '#C9A84C' : '#F5F0E8' }}>
+                      <th key={p.id} className="text-center pb-5 px-4 font-display font-bold text-white" style={{ fontSize: '1.1rem', letterSpacing: '-.02em', color: p.featured ? '#FF8C00' : '#FFFFFF' }}>
                         {p.name}
                       </th>
                     ))}
@@ -93,12 +93,12 @@ export default function Pricing() {
                     ['Premium design customisation', false, false, true],
                     ['AI chatbot for reader support', false, false, true],
                   ].map(([feature, ...vals]) => (
-                    <tr key={feature} style={{ borderTop: '1px solid rgba(201,168,76,0.07)' }}>
+                    <tr key={feature} style={{ borderTop: '1px solid rgba(255,140,0,0.07)' }}>
                       <td className="py-4 pr-8 text-white/45" style={{ fontSize: '0.88rem' }}>{feature}</td>
                       {vals.map((v, i) => (
                         <td key={i} className="py-4 px-4 text-center">
                           {v
-                            ? <span style={{ color: '#C9A84C', fontSize: 14 }}>✦</span>
+                            ? <span style={{ color: '#FF8C00', fontSize: 14 }}>✦</span>
                             : <span style={{ color: 'rgba(255,255,255,0.12)', fontSize: 12 }}>—</span>
                           }
                         </td>
@@ -106,11 +106,11 @@ export default function Pricing() {
                     </tr>
                   ))}
                   {/* Prices */}
-                  <tr style={{ borderTop: '1px solid rgba(201,168,76,0.2)' }}>
-                    <td className="py-6 font-mono text-[10px] tracking-widest uppercase" style={{ color: 'rgba(201,168,76,0.45)' }}>Price</td>
+                  <tr style={{ borderTop: '1px solid rgba(255,140,0,0.2)' }}>
+                    <td className="py-6 font-mono text-[10px] tracking-widest uppercase" style={{ color: 'rgba(255,140,0,0.45)' }}>Price</td>
                     {PLANS.map(p => (
                       <td key={p.id} className="py-6 px-4 text-center">
-                        <div className="font-display font-bold" style={{ fontSize: '1.4rem', letterSpacing: '-.03em', color: p.featured ? '#C9A84C' : '#F5F0E8' }}>{p.price}</div>
+                        <div className="font-display font-bold" style={{ fontSize: '1.4rem', letterSpacing: '-.03em', color: p.featured ? '#FF8C00' : '#FFFFFF' }}>{p.price}</div>
                       </td>
                     ))}
                   </tr>
@@ -137,14 +137,14 @@ export default function Pricing() {
         <div className="max-w-[1300px] mx-auto">
           <Reveal className="mb-12">
             <span className="tag mb-4">Add-Ons</span>
-            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-            <h2 className="h-lg text-white">Optional extras<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>to complete your presence</em></h2>
+            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+            <h2 className="h-lg text-white">Optional extras<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>to complete your presence</em></h2>
           </Reveal>
           <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {ADDONS.map(a => (
               <div key={a.label} className="card p-6">
                 <div className="font-display font-bold text-white text-base mb-1" style={{ letterSpacing: '-.01em' }}>{a.label}</div>
-                <div className="font-mono text-[11px] tracking-wide" style={{ color: '#C9A84C' }}>{a.price}</div>
+                <div className="font-mono text-[11px] tracking-wide" style={{ color: '#FF8C00' }}>{a.price}</div>
               </div>
             ))}
           </StaggerReveal>
@@ -156,8 +156,8 @@ export default function Pricing() {
         <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-16">
           <Reveal from="right">
             <span className="tag mb-4">FAQ</span>
-            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-            <h2 className="h-lg text-white">Common<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>questions</em></h2>
+            <div className="h-[1px] w-12 mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+            <h2 className="h-lg text-white">Common<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>questions</em></h2>
           </Reveal>
           <StaggerReveal className="flex flex-col gap-6">
             {[
@@ -178,12 +178,12 @@ export default function Pricing() {
 
       {/* ── CTA ── */}
       <section className="py-24 px-6 lg:px-10 text-center relative overflow-hidden"
-        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 60%), #0B0B0F' }}>
+        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,140,0,0.08) 0%, transparent 60%), #000000' }}>
         <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
         <Reveal className="relative z-10 max-w-2xl mx-auto">
           <span className="tag mb-4 text-center">Get Started</span>
-          <div className="h-[1px] w-12 mx-auto mb-6" style={{ background: 'rgba(201,168,76,0.4)' }} />
-          <h2 className="h-xl text-white mb-6">Not sure which plan?<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Let's talk it through.</em></h2>
+          <div className="h-[1px] w-12 mx-auto mb-6" style={{ background: 'rgba(255,140,0,0.4)' }} />
+          <h2 className="h-xl text-white mb-6">Not sure which plan?<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>Let's talk it through.</em></h2>
           <p className="text-white/38 text-base max-w-md mx-auto mb-10 leading-relaxed font-light">
             We'll help you choose the right plan for your needs and budget. No pressure, no hard sell.
           </p>
