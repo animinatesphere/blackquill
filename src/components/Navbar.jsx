@@ -55,14 +55,14 @@ export default function Navbar() {
               <path
                 d="M22 2C22 2 14 8 8 18L6 22L10 20C18 14 24 6 22 2Z"
                 fill="none"
-                stroke="#C9A84C"
+                stroke="#FF8C00"
                 strokeWidth="1.4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M8 18C8 18 10 16 12 15"
-                stroke="#C9A84C"
+                stroke="#FF8C00"
                 strokeWidth="1.4"
                 strokeLinecap="round"
               />
@@ -71,7 +71,7 @@ export default function Navbar() {
               className="font-display font-bold text-white"
               style={{ fontSize: "1.4rem", letterSpacing: "-.02em" }}
             >
-              Black<span style={{ color: "#C9A84C" }}>Quill</span>
+              Black<span style={{ color: "#FF8C00" }}>Quill</span>
             </span>
           </Link>
 

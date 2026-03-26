@@ -292,8 +292,8 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden"
-        style={{ height: "100vh", minHeight: 660, background: "#000000" }}
+        className="relative overflow-hidden flex items-center justify-center py-20 px-4"
+        style={{ minHeight: "100svh", background: "#000000" }}
       >
         {/* ── Wipe overlay ── */}
         <div
@@ -446,7 +446,7 @@ export default function Home() {
 
         {/* ── Hero content ── */}
         <motion.div
-          className="relative z-20 flex flex-col justify-center h-full max-w-[1300px] mx-auto px-5 sm:px-6 lg:px-10 pt-24 pb-6"
+          className="relative z-20 flex flex-col max-w-[1300px] mx-auto flex-1 h-fit"
           style={{ y: heroTY, opacity: heroOp }}
         >
           {/* Badge */}
@@ -513,20 +513,19 @@ export default function Home() {
 
               {/* Line 3: Digital Agency — muted italic */}
               <span className="block pb-1">
-                <span
-                  className="h-word inline-block"
+                <Words
+                  text="We provide specialized website solutions for the book publishing industry"
+                  className="h-word block"
+                  delay={0.6}
                   style={{
-                    opacity: 0,
                     color: "rgba(255,255,255,0.45)",
-                    fontSize: "clamp(1.1rem,3vw,4.8rem)",
+                    fontSize: "clamp(1.1rem,3vw,3.8rem)",
                     fontStyle: "italic",
                     fontWeight: 400,
                     letterSpacing: "-.01em",
+                    lineHeight: 1.3,
                   }}
-                >
-                  We provide specialized website solutions for the book
-                  publishing industry
-                </span>
+                />
               </span>
             </h1>
           </div>
@@ -544,8 +543,8 @@ export default function Home() {
           <p
             className="h-sub font-light leading-relaxed max-w-[440px] mb-6 sm:mb-10"
             style={{
-              fontSize: "clamp(0.97rem,1.5vw,1.12rem)",
-              lineHeight: 1.86,
+              fontSize: "clamp(0.9rem,1.4vw,1.1rem)",
+              lineHeight: 1.8,
               color: "rgba(255,255,255,0.5)",
               opacity: 0,
             }}
