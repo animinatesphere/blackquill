@@ -127,64 +127,9 @@ export const TESTIMONIALS = [
   },
 ];
 
-export const PLANS = [
-  {
-    id: "basic",
-    name: "Basic",
-    price: "₦117,000",
-    tagline: "Perfect for debut authors",
-    featured: false,
-    features: [
-      ". Homepage",
-      " ⁠About the author",
-      " ⁠E-commerce integration",
-      " ⁠Contact page",
-      " ⁠Social media integration",
-      " ⁠Local payment gateway integration",
-      " ⁠Six months hosting",
-      " ⁠Blog",
-    ],
-    cta: "Get started",
-  },
-  {
-    id: "hybrid",
-    name: "Hybrid",
-    price: "₦150,000",
-    tagline: "For established authors expanding their reach",
-    featured: true,
-    features: [
-      "Homepage",
-      "About the author",
-      "E-commerce integration",
-      "Contact page",
-      "Social media integration",
-      "Local and international payment gateway integration",
-      "Six months hosting",
-      "Blog",
-      "Interviews and features page",
-      "Appearance and events page",
-      "Awards and recognition page",
-      "Rich media integration",
-    ],
-    cta: "Most popular",
-  },
-
-  {
-    id: "book distribution",
-    name: "Book Distribution",
-    price: "₦20,000",
-    tagline: "For authors who just want to sell books online",
-    featured: false,
-    features: [
-      "Local distribution (selar,Libri)",
-      "Global distribution (Apple Books,Google Books,Barnes & Noble,Amazon etc)",
-      "Subscription Services (Scribd,Everand,Kobo etc",
-      "Libraries",
-      "Monthly sales and royalties report",
-    ],
-    cta: "Go premium",
-  },
-];
+// Plans & add-on pricing used to live here as static data. It's now managed
+// live via the admin dashboard (/admin/pricing) and served from the backend
+// (server/pricing.js) — see src/lib/api.js `fetchPricing`.
 
 export const TICKER_ITEMS = [
   "Author Websites",

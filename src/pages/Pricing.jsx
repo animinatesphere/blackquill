@@ -1,20 +1,24 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { PageTransition, PageHero, Ticker, Reveal, StaggerReveal, PlanCard } from '../components'
-import { PLANS, WHY_AUTHOR } from '../data'
-
-const ADDONS = [
-  { label: 'Additional pages', price: 'From ₦15,000 each' },
-  { label: 'Logo design', price: 'From ₦35,000' },
-  { label: 'Brand identity pack', price: 'From ₦80,000' },
-  { label: 'Book cover design', price: 'From ₦25,000' },
-  { label: 'Photography session', price: 'POA' },
-  { label: 'Annual hosting renewal', price: 'From ₦30,000 / yr' },
-  { label: 'Ongoing SEO retainer', price: 'POA' },
-  { label: 'Priority support plan', price: 'From ₦20,000 / mo' },
-]
+import { fetchPricing } from '../lib/api'
+import { formatNaira, formatUsd } from '../lib/currency'
 
 export default function Pricing() {
+  const [pricing, setPricing] = useState(null)
+  const [loadError, setLoadError] = useState('')
+
+  useEffect(() => {
+    fetchPricing()
+      .then(setPricing)
+      .catch(() => setLoadError("Couldn't load current pricing. Please refresh."))
+  }, [])
+
+  const usdRate = pricing?.usdRate
+  const plans = pricing?.plans || []
+  const addons = pricing?.addons || []
+
   return (
     <PageTransition>
       <PageHero
@@ -37,9 +41,15 @@ export default function Pricing() {
             </p>
           </Reveal>
 
-          <StaggerReveal className="grid md:grid-cols-3 gap-6 items-start">
-            {PLANS.map(plan => <PlanCard key={plan.id} plan={plan} />)}
-          </StaggerReveal>
+          {loadError ? (
+            <p className="text-center font-mono text-xs" style={{ color: 'rgba(255,100,100,0.7)' }}>{loadError}</p>
+          ) : !pricing ? (
+            <p className="text-center font-mono text-xs" style={{ color: 'rgba(255,140,0,0.4)' }}>Loading current pricing…</p>
+          ) : (
+            <StaggerReveal className="grid md:grid-cols-3 gap-6 items-start">
+              {plans.map(plan => <PlanCard key={plan.id} plan={plan} usdRate={usdRate} />)}
+            </StaggerReveal>
+          )}
 
           {/* all plans note */}
           <Reveal className="mt-10 text-center">
@@ -60,12 +70,13 @@ export default function Pricing() {
           </Reveal>
 
           <Reveal>
+            {pricing && (
             <div className="overflow-x-auto">
               <table className="w-full text-sm" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
                 <thead>
                   <tr>
                     <th className="text-left font-mono text-[10px] tracking-widest uppercase pb-5 pr-8" style={{ color: 'rgba(255,140,0,0.4)' }}>Feature</th>
-                    {PLANS.map(p => (
+                    {plans.map(p => (
                       <th key={p.id} className="text-center pb-5 px-4 font-display font-bold text-white" style={{ fontSize: '1.1rem', letterSpacing: '-.02em', color: p.featured ? '#FF8C00' : '#FFFFFF' }}>
                         {p.name}
                       </th>
@@ -108,16 +119,19 @@ export default function Pricing() {
                   {/* Prices */}
                   <tr style={{ borderTop: '1px solid rgba(255,140,0,0.2)' }}>
                     <td className="py-6 font-mono text-[10px] tracking-widest uppercase" style={{ color: 'rgba(255,140,0,0.45)' }}>Price</td>
-                    {PLANS.map(p => (
+                    {plans.map(p => (
                       <td key={p.id} className="py-6 px-4 text-center">
-                        <div className="font-display font-bold" style={{ fontSize: '1.4rem', letterSpacing: '-.03em', color: p.featured ? '#FF8C00' : '#FFFFFF' }}>{p.price}</div>
+                        <div className="font-display font-bold" style={{ fontSize: '1.4rem', letterSpacing: '-.03em', color: p.featured ? '#FF8C00' : '#FFFFFF' }}>{formatNaira(p.amountNGN)}</div>
+                        {formatUsd(p.amountNGN, usdRate) && (
+                          <div className="font-mono text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.35)' }}>≈ {formatUsd(p.amountNGN, usdRate)}</div>
+                        )}
                       </td>
                     ))}
                   </tr>
                   {/* CTAs */}
                   <tr>
                     <td></td>
-                    {PLANS.map(p => (
+                    {plans.map(p => (
                       <td key={p.id} className="py-4 px-4 text-center">
                         <Link to="/contact" className={p.featured ? 'btn-gold' : 'btn-outline'} style={{ fontSize: '11px', padding: '10px 20px' }}>
                           {p.cta} →
@@ -128,6 +142,7 @@ export default function Pricing() {
                 </tbody>
               </table>
             </div>
+            )}
           </Reveal>
         </div>
       </section>
@@ -141,10 +156,17 @@ export default function Pricing() {
             <h2 className="h-lg text-white">Optional extras<br /><em style={{ color: '#FF8C00', fontStyle: 'italic' }}>to complete your presence</em></h2>
           </Reveal>
           <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {ADDONS.map(a => (
-              <div key={a.label} className="card p-6">
+            {addons.map(a => (
+              <div key={a.id} className="card p-6">
                 <div className="font-display font-bold text-white text-base mb-1" style={{ letterSpacing: '-.01em' }}>{a.label}</div>
-                <div className="font-mono text-[11px] tracking-wide" style={{ color: '#FF8C00' }}>{a.price}</div>
+                <div className="font-mono text-[11px] tracking-wide" style={{ color: '#FF8C00' }}>
+                  {a.amountNGN === null ? 'POA' : `${a.prefix || ''}${formatNaira(a.amountNGN)}${a.suffix || ''}`}
+                </div>
+                {formatUsd(a.amountNGN, usdRate) && (
+                  <div className="font-mono text-[10px] tracking-wide mt-0.5" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                    ≈ {a.prefix || ''}{formatUsd(a.amountNGN, usdRate)}{a.suffix || ''}
+                  </div>
+                )}
               </div>
             ))}
           </StaggerReveal>

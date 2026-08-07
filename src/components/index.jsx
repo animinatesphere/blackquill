@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TICKER_ITEMS } from '../data'
+import { formatNaira, formatUsd } from '../lib/currency'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -245,8 +246,10 @@ export function TestimonialCard({ quote, author, role, color = '#C9A84C', initia
 /* ────────────────────────────────────────
    Plan / pricing card
 ──────────────────────────────────────── */
-export function PlanCard({ plan }) {
-  const { name, price, tagline, featured, features, cta } = plan
+export function PlanCard({ plan, usdRate }) {
+  const { name, amountNGN, tagline, featured, features, cta } = plan
+  const nairaLabel = formatNaira(amountNGN)
+  const usdLabel = formatUsd(amountNGN, usdRate)
   return (
     <motion.div
       className={`plan-card p-8 flex flex-col gap-6 h-full ${featured ? 'featured' : ''}`}
@@ -267,8 +270,13 @@ export function PlanCard({ plan }) {
       <div>
         <span className="tag mb-2">{name}</span>
         <div className="font-display font-bold text-white mt-1" style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.03em', color: featured ? '#FF8C00' : '#FFFFFF' }}>
-          {price}
+          {nairaLabel}
         </div>
+        {usdLabel && (
+          <div className="font-mono text-xs mt-1" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            ≈ {usdLabel} USD
+          </div>
+        )}
         <p className="text-white/35 text-sm mt-2">{tagline}</p>
       </div>
 

@@ -9,15 +9,20 @@ import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
+import AdminLogin from "./pages/Admin/Login";
+import AdminDashboard from "./pages/Admin/Dashboard";
+import AdminPricing from "./pages/Admin/Pricing";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
+
   return (
-    <div className="noise">
+    <div className={isAdmin ? "" : "noise"}>
       <ScrollToTop />
-      <Cursor />
-      <Navbar />
+      {!isAdmin && <Cursor />}
+      {!isAdmin && <Navbar />}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
@@ -26,9 +31,12 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/pricing" element={<AdminPricing />} />
         </Routes>
       </AnimatePresence>
-      <Footer />
+      {!isAdmin && <Footer />}
     </div>
   );
 }

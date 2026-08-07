@@ -6,6 +6,10 @@ export default function Cursor() {
   let lx = 0, ly = 0, mx = 0, my = 0
 
   useEffect(() => {
+    // Skip entirely on touch/coarse-pointer devices — there's no mouse to track,
+    // and the dot would otherwise render stuck at its default position.
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return
+
     const move = e => { mx = e.clientX; my = e.clientY }
     window.addEventListener('mousemove', move)
 

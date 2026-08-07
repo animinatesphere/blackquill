@@ -241,13 +241,17 @@ export default function Home() {
   const heroOp = useTransform(scrollY, [0, 550], [1, 0]);
   const overlayOp = useTransform(scrollY, [0, 450], [0.58, 0.86]);
 
-  /* ─── GSAP horizontal scroll (services) ─── */
+  /* ─── GSAP horizontal scroll (services) — desktop only.
+     Pinned scroll-jacking is unreliable on mobile browsers (address-bar
+     resize, touch scroll conflicts), so below the lg breakpoint this
+     section just becomes a native swipeable snap-scroll carousel instead. ─── */
   useEffect(() => {
     if (!pinRef.current || !panelRef.current) return;
     const panels = gsap.utils.toArray(".srv-panel");
     if (!panels.length) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1024px)", () => {
       const totalScroll = () =>
         panelRef.current.scrollWidth - pinRef.current.offsetWidth;
 
@@ -282,7 +286,8 @@ export default function Home() {
         );
       });
     });
-    return () => ctx.revert();
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -1115,30 +1120,31 @@ export default function Home() {
           ╚═══════════════════════════════════════════╝ */}
       <section
         ref={pinRef}
-        className="relative overflow-hidden"
-        style={{ background: "#000000", height: "100vh" }}
+        className="relative overflow-hidden h-auto lg:h-screen py-16 lg:py-0"
+        style={{ background: "#000000" }}
       >
         {/* labels */}
-        <div className="absolute top-8 left-6 lg:left-10 z-20">
+        <div className="absolute top-4 lg:top-8 left-6 lg:left-10 z-20">
           <span className="tag">How We Help</span>
         </div>
         <div
-          className="absolute top-8 right-6 lg:right-10 z-20 font-mono tracking-widest uppercase"
+          className="absolute top-4 lg:top-8 right-6 lg:right-10 z-20 font-mono tracking-widest uppercase"
           style={{ fontSize: 9, color: "rgba(255,140,0,0.3)" }}
         >
-          ← Scroll to explore →
+          <span className="lg:hidden">← Swipe to explore →</span>
+          <span className="hidden lg:inline">← Scroll to explore →</span>
         </div>
 
-        {/* horizontal strip */}
+        {/* horizontal strip — pinned+scrubbed on desktop, native snap-scroll on mobile */}
         <div
           ref={panelRef}
-          className="flex h-full items-center"
-          style={{ width: `${SERVICES.length * 100}vw` }}
+          className="flex items-stretch lg:items-center overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pt-14 lg:pt-0 lg:h-full hide-scrollbar"
+          style={{ width: `${SERVICES.length * 100}vw`, maxWidth: `${SERVICES.length * 100}vw`, scrollbarWidth: "none" }}
         >
           {SERVICES.map((s, i) => (
             <div
               key={s.id}
-              className="srv-panel flex-shrink-0 flex items-center justify-center px-4 sm:px-8 lg:px-14"
+              className="srv-panel snap-center flex-shrink-0 flex items-center justify-center px-4 sm:px-8 lg:px-14"
               style={{ width: "100vw", maxWidth: "100%" }}
             >
               <motion.div

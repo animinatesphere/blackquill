@@ -21,6 +21,13 @@
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #000000; }
   ::-webkit-scrollbar-thumb { background: #FF8C00; border-radius: 4px; }
+
+  /* Touch/coarse-pointer devices have no mouse — use the native cursor and
+     hide the custom dot/ring instead of leaving them stuck on screen. */
+  @media (hover: none), (pointer: coarse) {
+    body { cursor: auto; }
+    .cursor-dot, .cursor-ring { display: none; }
+  }
 }
 
 @layer components {
@@ -135,6 +142,9 @@
     background: linear-gradient(90deg, transparent, rgba(255,140,0,.4), transparent);
     border: none; margin: 0;
   }
+
+  /* ── Hide scrollbar (mobile snap carousels) ── */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
 
   /* ── Marquee ── */
   .marquee-wrap { overflow: hidden; }

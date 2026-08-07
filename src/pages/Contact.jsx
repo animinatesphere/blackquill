@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { PageTransition, Ticker, Reveal, StaggerReveal } from "../components";
+import { submitContact, ApiError } from "../lib/api";
 
 const SERVICES_LIST = [
   "Website Design & Build",
@@ -34,6 +35,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitError, setSubmitError] = useState("");
 
   /* GSAP hero entrance */
   useEffect(() => {
@@ -69,7 +71,7 @@ export default function Contact() {
     return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) {
@@ -77,11 +79,23 @@ export default function Contact() {
       return;
     }
     setErrors({});
+    setSubmitError("");
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    try {
+      await submitContact(form);
       setSubmitted(true);
-    }, 1800);
+    } catch (err) {
+      if (err instanceof ApiError && err.fieldErrors) {
+        setErrors(err.fieldErrors);
+      }
+      setSubmitError(
+        err instanceof ApiError
+          ? err.message
+          : "Couldn't send your message. Please check your connection and try again.",
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputBase = {
@@ -399,6 +413,20 @@ export default function Contact() {
                       </p>
                     )}
                   </div>
+
+                  {/* Submit error */}
+                  {submitError && (
+                    <div
+                      className="px-4 py-3 rounded-sm text-sm"
+                      style={{
+                        background: "rgba(255,80,80,0.08)",
+                        border: "1px solid rgba(255,80,80,0.3)",
+                        color: "rgba(255,140,140,0.9)",
+                      }}
+                    >
+                      {submitError}
+                    </div>
+                  )}
 
                   {/* Submit */}
                   <motion.button
