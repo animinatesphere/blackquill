@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "#000000",
-        borderTop: "1px solid rgba(255,140,0,0.12)",
+        background: "#f0eee7",
+        borderTop: "1px solid rgba(32,33,31,0.1)",
       }}
     >
       <div className="max-w-[1300px] mx-auto px-6 lg:px-10 pt-16 pb-0 grid md:grid-cols-4 gap-12">

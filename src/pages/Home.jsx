@@ -4,6 +4,7 @@ import {
   motion,
   useScroll,
   useTransform,
+  useReducedMotion,
   AnimatePresence,
 } from "framer-motion";
 import vi1 from "../videos/hero2.mp4";
@@ -13,7 +14,6 @@ import vi4 from "../videos/about.mp4";
 import vi5 from "../videos/why.mp4";
 import vi6 from "../videos/Testimonials.mp4";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   PageTransition,
   Ticker,
@@ -25,8 +25,6 @@ import {
   AccordionItem,
 } from "../components";
 import { SERVICES, PROJECTS, TESTIMONIALS, STATS, WHY_AUTHOR } from "../data";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* ─── Floating gold particle ─── */
 function Particle({ x, y, delay, size }) {
@@ -123,8 +121,6 @@ const PTCLS = Array.from({ length: 16 }, () => ({
 
 export default function Home() {
   const heroRef = useRef(null);
-  const pinRef = useRef(null); // horizontal scroll container
-  const panelRef = useRef(null); // inner strip
   const [openAcc, setOpenAcc] = useState(null);
   const [vidLoaded, setVidLoaded] = useState(false);
   const [vid2Loaded, setVid2Loaded] = useState(false);
@@ -132,10 +128,21 @@ export default function Home() {
   const [vid5Loaded, setVid5Loaded] = useState(false);
   const [vid6Loaded, setVid6Loaded] = useState(false);
   const [vCursor, setVCursor] = useState({ x: -200, y: -200, show: false });
+  const reduceMotion = useReducedMotion();
 
   /* ─── Hero GSAP cinematic timeline ─── */
   useEffect(() => {
     const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(".h-wipe", { scaleY: 0 });
+        gsap.set(".h-vid-wrap", { scale: 1, opacity: 1 });
+        gsap.set(".h-badge, .h-word, .h-rule, .h-sub, .h-cta, .h-stat, .h-scroll", {
+          opacity: 1,
+          clearProps: "transform,filter,clipPath",
+        });
+        return;
+      }
+
       const tl = gsap.timeline({ delay: 0.05 });
 
       // Wipe overlay out
@@ -241,55 +248,6 @@ export default function Home() {
   const heroOp = useTransform(scrollY, [0, 550], [1, 0]);
   const overlayOp = useTransform(scrollY, [0, 450], [0.58, 0.86]);
 
-  /* ─── GSAP horizontal scroll (services) — desktop only.
-     Pinned scroll-jacking is unreliable on mobile browsers (address-bar
-     resize, touch scroll conflicts), so below the lg breakpoint this
-     section just becomes a native swipeable snap-scroll carousel instead. ─── */
-  useEffect(() => {
-    if (!pinRef.current || !panelRef.current) return;
-    const panels = gsap.utils.toArray(".srv-panel");
-    if (!panels.length) return;
-
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 1024px)", () => {
-      const totalScroll = () =>
-        panelRef.current.scrollWidth - pinRef.current.offsetWidth;
-
-      gsap.to(panelRef.current, {
-        x: () => -totalScroll(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: pinRef.current,
-          pin: true,
-          scrub: 1.2,
-          end: () => `+=${totalScroll()}`,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      panels.forEach((panel, i) => {
-        if (i === 0) return;
-        gsap.fromTo(
-          panel.querySelector(".srv-inner"),
-          { opacity: 0.25, scale: 0.92, y: 30 },
-          {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            scrollTrigger: {
-              trigger: pinRef.current,
-              scrub: 1,
-              start: () => `top top-=${(i - 0.6) * window.innerWidth * 0.78}`,
-              end: () => `top top-=${i * window.innerWidth * 0.78}`,
-            },
-          },
-        );
-      });
-    });
-
-    return () => mm.revert();
-  }, []);
-
   return (
     <PageTransition>
       {/* ╔═══════════════════════════════════════════╗
@@ -341,25 +299,26 @@ export default function Home() {
             }}
           >
             {/* animated vertical rules to evoke book pages */}
-            {Array.from({ length: 14 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute top-0 bottom-0"
-                style={{
-                  left: `${4 + i * 7}%`,
-                  width: 1,
-                  background: `rgba(255,140,0,${0.03 + (i % 4) * 0.015})`,
-                  transformOrigin: "top",
-                }}
-                animate={{ scaleY: [0.35, 1, 0.35], opacity: [0.2, 0.7, 0.2] }}
-                transition={{
-                  duration: 3.5 + i * 0.35,
-                  repeat: Infinity,
-                  delay: i * 0.22,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
+            {!reduceMotion &&
+              Array.from({ length: 14 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute top-0 bottom-0"
+                  style={{
+                    left: `${4 + i * 7}%`,
+                    width: 1,
+                    background: `rgba(255,140,0,${0.03 + (i % 4) * 0.015})`,
+                    transformOrigin: "top",
+                  }}
+                  animate={{ scaleY: [0.35, 1, 0.35], opacity: [0.2, 0.7, 0.2] }}
+                  transition={{
+                    duration: 3.5 + i * 0.35,
+                    repeat: Infinity,
+                    delay: i * 0.22,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
           </div>
         </motion.div>
 
@@ -656,7 +615,7 @@ export default function Home() {
               background: "linear-gradient(to bottom,#FF8C00,transparent)",
               transformOrigin: "top",
             }}
-            animate={{ scaleY: [0, 1, 0] }}
+            animate={reduceMotion ? { scaleY: 1 } : { scaleY: [0, 1, 0] }}
             transition={{ duration: 1.7, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
@@ -1116,113 +1075,81 @@ export default function Home() {
       </section>
 
       {/* ╔═══════════════════════════════════════════╗
-          ║  04  HORIZONTAL SCROLL — SERVICES         ║
+          ║  04  SERVICES                             ║
           ╚═══════════════════════════════════════════╝ */}
       <section
-        ref={pinRef}
-        className="relative overflow-hidden h-auto lg:h-screen py-16 lg:py-0"
-        style={{ background: "#000000" }}
+        className="relative overflow-hidden px-6 py-24 lg:px-10 lg:py-32"
+        style={{ background: "#f0eee7" }}
       >
-        {/* labels */}
-        <div className="absolute top-4 lg:top-8 left-6 lg:left-10 z-20">
-          <span className="tag">How We Help</span>
-        </div>
-        <div
-          className="absolute top-4 lg:top-8 right-6 lg:right-10 z-20 font-mono tracking-widest uppercase"
-          style={{ fontSize: 9, color: "rgba(255,140,0,0.3)" }}
-        >
-          <span className="lg:hidden">← Swipe to explore →</span>
-          <span className="hidden lg:inline">← Scroll to explore →</span>
-        </div>
+        <div className="mx-auto max-w-[1300px]">
+          <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <span className="tag mb-3">How We Help</span>
+              <h2 className="h-xl text-ink">
+                Thoughtful services
+                <br />
+                <em>for the world of books.</em>
+              </h2>
+            </div>
+            <p className="max-w-md leading-relaxed text-ink/65">
+              From a distinctive online home to long-term support, we help you
+              build a publishing presence that works for you.
+            </p>
+          </Reveal>
 
-        {/* horizontal strip — pinned+scrubbed on desktop, native snap-scroll on mobile */}
-        <div
-          ref={panelRef}
-          className="flex items-stretch lg:items-center overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pt-14 lg:pt-0 lg:h-full hide-scrollbar"
-          style={{ width: `${SERVICES.length * 100}vw`, maxWidth: `${SERVICES.length * 100}vw`, scrollbarWidth: "none" }}
-        >
-          {SERVICES.map((s, i) => (
-            <div
-              key={s.id}
-              className="srv-panel snap-center flex-shrink-0 flex items-center justify-center px-4 sm:px-8 lg:px-14"
-              style={{ width: "100vw", maxWidth: "100%" }}
-            >
-              <motion.div
-                className="srv-inner relative w-full max-w-[90vw] sm:max-w-none card p-6 sm:p-10 lg:p-14"
-                whileHover={{ borderColor: "rgba(255,140,0,0.42)" }}
-                transition={{ duration: 0.3 }}
+          <StaggerReveal className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {SERVICES.map((service) => (
+              <motion.article
+                key={service.id}
+                className="group relative flex min-h-[370px] flex-col overflow-hidden rounded-2xl border border-ink/10 bg-ivory p-7 shadow-[0_8px_26px_rgba(32,33,31,0.04)]"
+                whileHover={reduceMotion ? undefined : { y: -7 }}
+                transition={{ type: "spring", stiffness: 280, damping: 22 }}
               >
-                {/* big ghost num */}
-                <div
-                  className="absolute top-5 right-8 font-display font-bold italic pointer-events-none select-none"
-                  style={{
-                    fontSize: "clamp(5rem,11vw,10rem)",
-                    color: "rgba(255,140,0,0.045)",
-                    letterSpacing: "-.04em",
-                    lineHeight: 1,
-                  }}
-                >
-                  {s.num}
+                <div className="mb-9 flex items-start justify-between">
+                  <span className="font-mono text-xs tracking-[0.18em] text-coral">
+                    {service.num}
+                  </span>
+                  <motion.span
+                    aria-hidden="true"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-lime/60 text-xl text-ink"
+                    whileHover={reduceMotion ? undefined : { rotate: 12, scale: 1.08 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                  >
+                    {service.icon}
+                  </motion.span>
                 </div>
-
-                <div className="relative z-10">
-                  <span className="tag mb-3">{s.tag}</span>
-                  <div
-                    className="h-[1px] w-12 mt-3 mb-6"
-                    style={{ background: "rgba(255,140,0,0.38)" }}
-                  />
-                  <h3
-                    className="font-display font-bold text-white mb-5"
-                    style={{
-                      fontSize: "clamp(2rem,4vw,3.6rem)",
-                      letterSpacing: "-.03em",
-                      lineHeight: 0.94,
-                    }}
-                  >
-                    {s.label}
-                  </h3>
-                  <p
-                    className="text-white/44 leading-relaxed mb-8 max-w-lg font-light"
-                    style={{ fontSize: "1rem", lineHeight: 1.82 }}
-                  >
-                    {s.desc}
+                <h3 className="mb-3 font-display text-xl font-bold leading-tight tracking-tight text-ink">
+                  {service.label}
+                </h3>
+                <p className="mb-5 text-sm font-medium leading-relaxed text-ink/70">
+                  {service.short}
+                </p>
+                <p className="mb-7 text-sm leading-relaxed text-ink/60">
+                  {service.desc}
+                </p>
+                <div className="mt-auto border-t border-ink/10 pt-5">
+                  <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.16em] text-coral">
+                    Included expertise
                   </p>
-                  <ul className="flex flex-wrap gap-2 mb-8">
-                    {s.features.map((f) => (
-                      <li
-                        key={f}
-                        className="font-mono tracking-wide px-3 py-1.5 rounded-sm"
-                        style={{
-                          fontSize: 10,
-                          background: "rgba(255,140,0,0.07)",
-                          border: "1px solid rgba(255,140,0,0.14)",
-                          color: "rgba(255,140,0,0.68)",
-                        }}
-                      >
-                        {f}
+                  <ul className="mb-6 space-y-2">
+                    {service.features.slice(0, 3).map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-xs leading-relaxed text-ink/70">
+                        <span aria-hidden="true" className="text-coral">✦</span>
+                        {feature}
                       </li>
                     ))}
                   </ul>
-                  <Mag
+                  <Link
                     to="/services"
-                    className="btn-gold inline-flex"
-                    style={{ fontSize: 12 }}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-coral"
                   >
-                    Learn more →
-                  </Mag>
+                    Explore service <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
-              </motion.div>
-            </div>
-          ))}
+              </motion.article>
+            ))}
+          </StaggerReveal>
         </div>
-
-        <div
-          className="absolute bottom-0 left-0 right-0 h-[1px]"
-          style={{
-            background:
-              "linear-gradient(90deg,transparent,rgba(255,140,0,0.28),transparent)",
-          }}
-        />
       </section>
 
       {/* ╔═══════════════════════════════════════════╗

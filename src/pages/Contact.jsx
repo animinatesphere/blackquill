@@ -40,6 +40,10 @@ export default function Contact() {
   /* GSAP hero entrance */
   useEffect(() => {
     const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(".ct-line, .ct-deco", { opacity: 1, clearProps: "transform,filter" });
+        return;
+      }
       gsap.fromTo(
         ".ct-line",
         { opacity: 0, y: 48, skewY: 1.5 },

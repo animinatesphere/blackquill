@@ -24,6 +24,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.fromTo(
       ".bq-nav",
       { y: -30, opacity: 0 },
