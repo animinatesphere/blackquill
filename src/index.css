@@ -233,6 +233,17 @@
   font-family: Georgia, serif;
   font-weight: 400;
 }
+.noise .who-we-are-highlight {
+  color: var(--coral);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.06em;
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: .12em;
+  text-underline-offset: .08em;
+}
 .noise .gold-italic { color: var(--coral); }
 .noise .tag { color: var(--coral); font-weight: 700; }
 
