@@ -631,24 +631,6 @@ export default function Home() {
         className="relative py-32 px-6 lg:px-10 overflow-hidden"
         style={{ background: "#000000" }}
       >
-        {/* large ghost text */}
-        <motion.div
-          className="absolute right-0 top-0 bottom-0 flex items-center font-display font-bold select-none pointer-events-none overflow-hidden"
-          style={{
-            fontSize: "clamp(14rem,24vw,28rem)",
-            color: "rgba(255,140,0,0.025)",
-            lineHeight: 1,
-            letterSpacing: "-.04em",
-            paddingRight: "2%",
-          }}
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Ink
-        </motion.div>
-
         <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
           {/* Visual card block */}
           <Reveal from="right" className="relative">
@@ -858,47 +840,61 @@ export default function Home() {
 
           {/* Text */}
           <Reveal from="left">
-            <span className="tag mb-3">Who We Are</span>
-            <div
-              className="h-[1px] w-12 mt-3 mb-7"
-              style={{ background: "rgba(255,140,0,0.4)" }}
-            />
-            <h2 className="h-xl text-white mb-7" style={{ lineHeight: 0.94 }}>
-              <Words text="The only agency built" className="block" delay={0} />
-              <span className="block mt-1">
-                <Words text="for the" delay={0.3} />{" "}
-                <motion.em
-                  style={{ color: "#FF8C00", fontStyle: "italic" }}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.9,
-                    delay: 0.58,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  publishing world.
-                </motion.em>
+            <div className="mb-7 flex items-center gap-3">
+              <span className="tag">Who We Are</span>
+              <span className="h-px w-12 bg-coral/50" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">
+                Publishing is our focus
               </span>
+            </div>
+            <h2
+              className="mb-7 max-w-[13ch] font-display text-ink"
+              style={{
+                fontSize: "clamp(2.65rem, 5vw, 4.65rem)",
+                fontWeight: 750,
+                lineHeight: 1.04,
+                letterSpacing: "-.065em",
+              }}
+            >
+              The only agency built for the{" "}
+              <motion.em
+                className="who-we-are-highlight"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.18,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                publishing world.
+              </motion.em>
             </h2>
 
-            {[
-              "BlackQuill Digital Agency is Nigeria's only agency dedicated to delivering bespoke website and e-commerce projects for authors, publishers, and literary organisations.",
-              "Our extensive experience — coupled with active participation in industry events like The Africa Laureate Awards — ensures we have a deep understanding of our clients' unique needs. We move beyond the basics and focus on your strategic objectives.",
-            ].map((p, i) => (
-              <motion.p
-                key={i}
-                className="text-white/42 leading-relaxed mb-5 max-w-md font-light"
-                style={{ fontSize: "1.04rem", lineHeight: 1.86 }}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.28 + i * 0.14 }}
-              >
-                {p}
-              </motion.p>
-            ))}
+            <motion.p
+              className="mb-5 max-w-xl text-[1.08rem] font-medium leading-[1.8] text-ink/80"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+            >
+              BlackQuill Digital Agency is Nigeria&apos;s only agency dedicated
+              to delivering bespoke website and e-commerce projects for
+              authors, publishers, and literary organisations.
+            </motion.p>
+            <motion.p
+              className="mb-5 max-w-xl text-base font-light leading-[1.85] text-ink/65"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.24 }}
+            >
+              Our extensive experience — coupled with active participation in
+              industry events like The Africa Laureate Awards — ensures we have
+              a deep understanding of our clients&apos; unique needs. We move
+              beyond the basics and focus on your strategic objectives.
+            </motion.p>
 
             <div className="flex flex-wrap gap-4 mt-8">
               <Mag to="/about" className="btn-gold inline-flex">
