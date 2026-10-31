@@ -4,16 +4,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        display: ['Manrope', 'system-ui', 'sans-serif'],
         body:    ['"DM Sans"', 'system-ui', 'sans-serif'],
         mono:    ['"DM Mono"', 'monospace'],
       },
       colors: {
-        gold:   '#FF8C00',
-        ink:    '#000000',
-        paper:  '#FFFFFF',
+        gold:   '#ff735e',
+        coral:  '#ff735e',
+        lime:   '#d2e879',
+        stone:  '#f0eee7',
+        ivory:  '#fffefa',
+        ink:    '#20211f',
+        paper:  '#f5f3ee',
         quill:  '#1A1A2E',
-        cream:  '#FFFFFF',
+        cream:  '#fffefa',
       },
     },
   },

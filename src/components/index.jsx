@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function PageTransition({ children }) {
   return (
     <motion.div
+      className="page-transition"
       initial={{ opacity: 0, y: 22 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -14 }}
@@ -30,22 +31,29 @@ export function Reveal({ children, delay = 0, from = 'bottom', className = '' })
   const ref = useRef(null)
   useEffect(() => {
     if (!ref.current) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set(ref.current, { opacity: 1 })
+      return
+    }
     const fromMap = {
-      bottom: { opacity: 0, y: 50 },
-      left:   { opacity: 0, x: -50 },
-      right:  { opacity: 0, x: 50 },
-      top:    { opacity: 0, y: -40 },
+      bottom: { opacity: 0, y: 50, filter: 'blur(5px)' },
+      left:   { opacity: 0, x: -50, filter: 'blur(3px)' },
+      right:  { opacity: 0, x: 50, filter: 'blur(3px)' },
+      top:    { opacity: 0, y: -40, filter: 'blur(3px)' },
       fade:   { opacity: 0 },
     }
-    gsap.fromTo(ref.current, fromMap[from] || fromMap.bottom, {
-      opacity: 1, y: 0, x: 0,
-      duration: 0.9, delay,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: ref.current, start: 'top 88%', once: true },
-    })
+    const ctx = gsap.context(() => {
+      gsap.fromTo(ref.current, fromMap[from] || fromMap.bottom, {
+        opacity: 1, y: 0, x: 0, filter: 'blur(0px)',
+        duration: 0.9, delay,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: ref.current, start: 'top 88%', once: true },
+      })
+    }, ref)
+    return () => ctx.revert()
   }, [])
   return (
-    <div ref={ref} className={className} style={{ opacity: 0 }}>
+    <div ref={ref} className={className}>
       {children}
     </div>
   )
@@ -58,18 +66,22 @@ export function StaggerReveal({ children, className = '', stagger = 0.1, from = 
   const ref = useRef(null)
   useEffect(() => {
     if (!ref.current) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const kids = Array.from(ref.current.children)
     const fromMap = {
       bottom: { opacity: 0, y: 44 },
       left:   { opacity: 0, x: -36 },
       right:  { opacity: 0, x: 36 },
     }
-    gsap.fromTo(kids, fromMap[from] || fromMap.bottom, {
-      opacity: 1, y: 0, x: 0,
-      duration: 0.75, stagger,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: ref.current, start: 'top 86%', once: true },
-    })
+    const ctx = gsap.context(() => {
+      gsap.fromTo(kids, { ...(fromMap[from] || fromMap.bottom), filter: 'blur(3px)' }, {
+        opacity: 1, y: 0, x: 0, filter: 'blur(0px)',
+        duration: 0.75, stagger,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: ref.current, start: 'top 86%', once: true },
+      })
+    }, ref)
+    return () => ctx.revert()
   }, [])
   return <div ref={ref} className={className}>{children}</div>
 }
@@ -81,12 +93,19 @@ export function Counter({ target, prefix = '', suffix = '' }) {
   const ref = useRef(null)
   useEffect(() => {
     if (!ref.current) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      ref.current.textContent = prefix + target + suffix
+      return
+    }
     const obj = { val: 0 }
-    gsap.to(obj, {
-      val: target, duration: 2.2, ease: 'power2.out',
-      scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
-      onUpdate() { if (ref.current) ref.current.textContent = prefix + Math.round(obj.val) + suffix },
-    })
+    const ctx = gsap.context(() => {
+      gsap.to(obj, {
+        val: target, duration: 2.2, ease: 'power2.out',
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
+        onUpdate() { if (ref.current) ref.current.textContent = prefix + Math.round(obj.val) + suffix },
+      })
+    }, ref)
+    return () => ctx.revert()
   }, [target])
   return <span ref={ref}>{prefix}0{suffix}</span>
 }
@@ -97,8 +116,11 @@ export function Counter({ target, prefix = '', suffix = '' }) {
 export function Ticker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS]
   return (
-    <div className="marquee-wrap py-[13px]"
-      style={{ background: 'rgba(0,0,0,0.9)', borderTop: '1px solid rgba(255,140,0,0.1)', borderBottom: '1px solid rgba(255,140,0,0.1)' }}>
+    <div
+      className="marquee-wrap py-[13px]"
+      aria-label="BlackQuill services"
+      style={{ background: '#d2e879', borderTop: '1px solid rgba(32,33,31,0.08)', borderBottom: '1px solid rgba(32,33,31,0.08)' }}
+    >
       <div className="marquee-track">
         {items.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-5 mx-6 font-mono text-[10px] font-medium tracking-[0.2em] uppercase whitespace-nowrap"
@@ -117,17 +139,37 @@ export function Ticker() {
 ──────────────────────────────────────── */
 export function PageHero({ tag, title, subtitle }) {
   const ref = useRef(null)
+  const titleRef = useRef(null)
+  const subtitleRef = useRef(null)
   useEffect(() => {
     if (!ref.current) return
     const ctx = gsap.context(() => {
-      gsap.fromTo('.ph-line',
-        { opacity: 0, y: 48, skewY: 1.5 },
-        { opacity: 1, y: 0, skewY: 0, duration: 1, stagger: 0.13, ease: 'power4.out', delay: 0.2 }
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const timeline = gsap.timeline({ defaults: { ease: 'power4.out' } })
+      if (!reduceMotion) {
+        gsap.fromTo('.ph-ornament',
+          { opacity: 0, scale: 0.75, rotate: -18 },
+          { opacity: 1, scale: 1, rotate: 0, duration: 1.15, ease: 'back.out(1.2)' },
+        )
+      }
+      timeline.fromTo('.ph-tag',
+        { opacity: 0, y: reduceMotion ? 0 : 20 },
+        { opacity: 1, y: 0, duration: reduceMotion ? 0.01 : 0.55 },
       )
-      // ink-drop line
-      gsap.fromTo('.ph-line-decoration',
+      timeline.fromTo(titleRef.current,
+        { opacity: 0, y: reduceMotion ? 0 : 32, clipPath: 'inset(0 0 100% 0)' },
+        { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: reduceMotion ? 0.01 : 0.95 },
+        '-=0.25',
+      )
+      timeline.fromTo(subtitleRef.current,
+        { opacity: 0, y: reduceMotion ? 0 : 18 },
+        { opacity: 1, y: 0, duration: reduceMotion ? 0.01 : 0.7 },
+        '-=0.42',
+      )
+      timeline.fromTo('.ph-line-decoration',
         { scaleX: 0 },
-        { scaleX: 1, duration: 1.4, ease: 'power3.out', delay: 0.5, transformOrigin: 'left' }
+        { scaleX: 1, duration: reduceMotion ? 0.01 : 0.9, transformOrigin: 'left' },
+        '-=0.55',
       )
     }, ref)
     return () => ctx.revert()
@@ -135,28 +177,28 @@ export function PageHero({ tag, title, subtitle }) {
 
   return (
     <section ref={ref} className="relative pt-36 pb-24 px-6 lg:px-10 overflow-hidden"
-      style={{ background: 'radial-gradient(ellipse 70% 60% at 20% 60%, rgba(255,140,0,0.06) 0%, transparent 60%), #000000' }}>
+      style={{ background: 'radial-gradient(ellipse 70% 60% at 20% 60%, rgba(210,232,121,0.28) 0%, transparent 60%), #f5f3ee' }}>
       {/* grid */}
-      <div className="absolute inset-0 grid-bg pointer-events-none opacity-50" />
+      <div className="absolute inset-0 grid-bg pointer-events-none opacity-35" />
 
       {/* decorative large glyph */}
-      <div className="ph-line absolute right-6 lg:right-16 top-24 font-display font-bold pointer-events-none select-none opacity-0"
-        style={{ fontSize: 'clamp(8rem,18vw,18rem)', color: 'rgba(255,140,0,0.04)', lineHeight: 1, letterSpacing: '-.04em' }}>
+      <div className="ph-ornament absolute right-6 lg:right-16 top-24 font-display font-bold pointer-events-none select-none"
+        style={{ fontSize: 'clamp(8rem,18vw,18rem)', color: '#d2e87945', lineHeight: 1, letterSpacing: '-.04em' }}>
         &ldquo;
       </div>
 
       <div className="max-w-[1300px] mx-auto relative z-10">
-        <div className="ph-line" style={{ opacity: 0 }}>
+        <div className="ph-tag">
           <span className="tag">{tag}</span>
         </div>
         <div className="ph-line-decoration h-[1px] w-16 mt-4 mb-6" style={{ background: 'rgba(255,140,0,0.4)', opacity: 0 }} />
         <h1
-          className="h-display text-white ph-line mb-6"
-          style={{ opacity: 0 }}
+          className="h-display text-ink ph-line mb-6"
+          ref={titleRef}
           dangerouslySetInnerHTML={{ __html: title }}
         />
         {subtitle && (
-          <p className="text-white/40 text-lg leading-relaxed max-w-xl ph-line font-light" style={{ opacity: 0 }}>
+          <p ref={subtitleRef} className="text-ink/65 text-lg leading-relaxed max-w-xl ph-subtitle font-light">
             {subtitle}
           </p>
         )}
@@ -169,11 +211,20 @@ export function PageHero({ tag, title, subtitle }) {
    Project card
 ──────────────────────────────────────── */
 export function ProjectCard({ project }) {
-  const { name, tags, stat, bg, accent, desc } = project
+  const { name, tags, stat, bg, image, accent, desc } = project
   return (
     <motion.div
-      className="relative rounded-sm overflow-hidden cursor-pointer"
-      style={{ aspectRatio: '4/3', background: bg, minHeight: 280 }}
+      className="project-card relative rounded-sm overflow-hidden cursor-pointer"
+      style={{
+        aspectRatio: '4/3',
+        background: bg,
+        backgroundImage: image
+          ? `linear-gradient(180deg, rgba(255,254,250,0.08), rgba(32,33,31,0.22)), url("${image}")`
+          : bg,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        minHeight: 280,
+      }}
       whileHover="hover" initial="rest"
     >
       {/* subtle grid */}
@@ -188,14 +239,14 @@ export function ProjectCard({ project }) {
 
       {/* dark overlay */}
       <motion.div className="absolute inset-0"
-        variants={{ rest: { background: 'rgba(0,0,0,0)' }, hover: { background: 'rgba(0,0,0,0.78)' } }}
+        variants={{ rest: { background: 'rgba(255,254,250,0)' }, hover: { background: 'rgba(255,254,250,0.72)' } }}
         transition={{ duration: 0.38 }} />
 
       {/* tags */}
       <div className="absolute top-5 left-5 flex flex-wrap gap-1.5">
         {tags.map(t => (
           <span key={t} className="font-mono text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-sm"
-            style={{ background: 'rgba(0,0,0,0.7)', color: 'rgba(255,140,0,0.7)', border: '1px solid rgba(255,140,0,0.2)' }}>
+            style={{ background: 'rgba(255,254,250,0.9)', color: 'var(--coral)', border: '1px solid rgba(32,33,31,0.12)' }}>
             {t}
           </span>
         ))}
@@ -203,7 +254,7 @@ export function ProjectCard({ project }) {
 
       {/* arrow */}
       <motion.div className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center font-bold text-sm rounded-sm"
-        style={{ background: accent, color: '#000000' }}
+        style={{ background: accent, color: 'var(--ink)' }}
         variants={{ rest: { opacity: 0, scale: 0.7 }, hover: { opacity: 1, scale: 1 } }}
         transition={{ duration: 0.3 }}>
         ↗
@@ -211,10 +262,11 @@ export function ProjectCard({ project }) {
 
       {/* info */}
       <motion.div className="absolute bottom-0 left-0 right-0 p-6"
-        variants={{ rest: { y: 18, opacity: 0 }, hover: { y: 0, opacity: 1 } }}
+        style={{ background: 'linear-gradient(to top, rgba(255,254,250,0.96), rgba(255,254,250,0.84) 72%, transparent)' }}
+        variants={{ rest: { y: 0, opacity: 1 }, hover: { y: 0, opacity: 1 } }}
         transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}>
-        <h3 className="font-display font-bold text-white text-2xl mb-1" style={{ letterSpacing: '-.02em' }}>{name}</h3>
-        <p className="font-mono text-xs" style={{ color: accent }}>{stat}</p>
+        <h3 className="font-display font-bold text-ink text-2xl mb-1" style={{ letterSpacing: '-.02em' }}>{name}</h3>
+        <p className="font-mono text-xs text-ink/70">{stat}</p>
       </motion.div>
     </motion.div>
   )

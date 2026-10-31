@@ -1,0 +1,70 @@
+{
+  "usdRate": 1600,
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "amountNGN": 117000,
+      "tagline": "Perfect for debut authors",
+      "featured": false,
+      "cta": "Get started",
+      "features": [
+        "Homepage",
+        "About the author",
+        "E-commerce integration",
+        "Contact page",
+        "Social media integration",
+        "Local payment gateway integration",
+        "Six months hosting",
+        "Blog"
+      ]
+    },
+    {
+      "id": "hybrid",
+      "name": "Hybrid",
+      "amountNGN": 150000,
+      "tagline": "For established authors expanding their reach",
+      "featured": true,
+      "cta": "Most popular",
+      "features": [
+        "Homepage",
+        "About the author",
+        "E-commerce integration",
+        "Contact page",
+        "Social media integration",
+        "Local and international payment gateway integration",
+        "Six months hosting",
+        "Blog",
+        "Interviews and features page",
+        "Appearance and events page",
+        "Awards and recognition page",
+        "Rich media integration"
+      ]
+    },
+    {
+      "id": "book-distribution",
+      "name": "Book Distribution",
+      "amountNGN": 20000,
+      "tagline": "For authors who just want to sell books online",
+      "featured": false,
+      "cta": "Go premium",
+      "features": [
+        "Local distribution (Selar, Libri)",
+        "Global distribution (Apple Books, Google Books, Barnes & Noble, Amazon etc)",
+        "Subscription services (Scribd, Everand, Kobo etc)",
+        "Libraries",
+        "Monthly sales and royalties report"
+      ]
+    }
+  ],
+  "addons": [
+    { "id": "pages", "label": "Additional pages", "amountNGN": 15000, "prefix": "From ", "suffix": " each" },
+    { "id": "logo", "label": "Logo design", "amountNGN": 35000, "prefix": "From ", "suffix": "" },
+    { "id": "brand", "label": "Brand identity pack", "amountNGN": 80000, "prefix": "From ", "suffix": "" },
+    { "id": "cover", "label": "Book cover design", "amountNGN": 25000, "prefix": "From ", "suffix": "" },
+    { "id": "photo", "label": "Photography session", "amountNGN": null, "prefix": "", "suffix": "" },
+    { "id": "hosting", "label": "Annual hosting renewal", "amountNGN": 30000, "prefix": "From ", "suffix": " / yr" },
+    { "id": "seo", "label": "Ongoing SEO retainer", "amountNGN": null, "prefix": "", "suffix": "" },
+    { "id": "support", "label": "Priority support plan", "amountNGN": 20000, "prefix": "From ", "suffix": " / mo" }
+  ]
+}
