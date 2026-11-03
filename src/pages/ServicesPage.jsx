@@ -27,7 +27,7 @@ export default function ServicesPage() {
       <EditorialHero
         eyebrow="Our services"
         description="From strategy to execution — bespoke digital solutions built exclusively for the publishing world."
-        aside={<div className="ep-hero-note"><span>01 — 04</span><strong>One publishing<br />partner. Every<br /><em>important detail.</em></strong><i>✳</i></div>}
+        aside={<div className="ep-hero-note"><span>01 — 06</span><strong>One publishing<br />partner. Every<br /><em>important detail.</em></strong><i>✳</i></div>}
       >
         How BlackQuill<br /><em>can help you.</em>
       </EditorialHero>

@@ -1,9 +1,10 @@
+import ayo from "../assets/IMG_8114.png"
 export const SERVICES = [
   {
     id: "web",
     num: "01",
     icon: "◻",
-    label: "Website Design & Build",
+    label: "Website Design & Development",
     short: "Bespoke sites for the publishing world",
     desc: "We design and build beautiful, bespoke websites for authors, publishers, literary agencies and other organisations in the worlds of books and publishing. We use custom designs to make our sites easy for clients to manage, capable of evolving over time and exceptional value.",
     features: [
@@ -51,8 +52,42 @@ export const SERVICES = [
     color: "#FF8C00",
   },
   {
-    id: "training",
+    id: "audiobook",
     num: "04",
+    icon: "♫",
+    label: "Audiobook Production & Distribution",
+    short: "Bring your book to listeners everywhere",
+    desc: "Turn your book into an engaging listening experience. We support the audiobook journey from production planning and narration through audio editing, mastering and distribution, helping your work reach listeners on the platforms they already use.",
+    features: [
+      "Audiobook production planning",
+      "Narrator and voice direction",
+      "Recording, editing & mastering",
+      "Audiobook metadata preparation",
+      "Distribution platform setup",
+      "Release-ready audio files",
+    ],
+    color: "#FF8C00",
+  },
+  {
+    id: "distribution",
+    num: "05",
+    icon: "▤",
+    label: "Book Distribution",
+    short: "Get your books into more readers' hands",
+    desc: "Make your books available beyond a single store or marketplace. We help authors prepare and distribute titles through local and international retail, subscription and library channels, with a clear view of where your books can be found.",
+    features: [
+      "Local distribution through Selar and Libri",
+      "Global ebook retailer distribution",
+      "Apple Books, Google Books and more",
+      "Subscription service availability",
+      "Library distribution options",
+      "Monthly sales and royalties reports",
+    ],
+    color: "#CC7000",
+  },
+  {
+    id: "training",
+    num: "06",
     icon: "◉",
     label: "Training & Support",
     short: "You're never left alone",
@@ -96,7 +131,7 @@ export const PROJECTS = [
     tags: ["Website", "E-Commerce", "Training"],
     stat: "40% increase in direct book sales in 3 months",
     bg: "linear-gradient(135deg,#f0eee7 0%,#cbd6bd 100%)",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=1200&q=85",
+    image: ayo,
     accent: "#FF8C00",
     desc: "A growing independent publisher needed to move readers from social to direct sales. We built the store, trained the team, and set up automated fulfilment.",
   },
@@ -115,15 +150,15 @@ export const PROJECTS = [
 export const TESTIMONIALS = [
   {
     quote:
-      "The team really listened to what I needed and provided a wide range of options and examples. Their expert knowledge of the publishing industry was a huge bonus. My finished website is so straightforward to manage. Highest of recommendations for BlackQuill!",
+      "I am so pleased that I commissioned BlackQuill to develop my new author website, a replacement for my existing one.The initial brief meeting set the tone for the whole project. The team really listened to what I needed and provided a wide range of options and examples. Their expert knowledge of the publishing industry was a huge bonus as well. BlackQuill’s step-by-step approach was most helpful in identifying all the functionality I needed as well as the overall look of the site. I never felt rushed either and very much appreciated their patience. We only progressed to the next stage when I was satisfied with the work. I cannot praise their responsiveness enough either. When issues or glitches needed to be addressed, I only ever had to raise them once. They were then sorted promptly and efficiently. My finished website is so straightforward to manage. Being able to easily add or change my own content is an excellent feature. Highest of recommendations for BlackQuill!",
     author: "Ayodeji Ajagbe",
-    role: "International Bestselling & Award-Winning Author",
+    role: "International Best Selling & Award-Winning Author",
     initials: "AA",
     color: "#FF8C00",
   },
   {
     quote:
-      "BlackQuill are true professionals with the skill mix necessary to design, develop and host a website that says excellence. They are extremely patient and created for us a website of which we are extremely proud. We cannot recommend the BlackQuill team more highly.",
+      "We were struggling to find a good website designer until we met with BlackQuill team. Suddenly we understood the difference that a truly professional, experienced and client-focused web design team could make to our project. BlackQuill are true professionals with the skill mix necessary to design, develop and host a website that says excellence. They are extremely patient and the team created for us a website of which we are extremely proud. We are now extending our website to include an e-commerce shop and looking forward very much to working with the BlackQuill team again in the very near future. We cannot recommend the BlackQuill team more highly.",
     author: "Africa Laureate Awards Limited",
     role: "Pan-African Literary Awards Organisation",
     initials: "AL",
@@ -143,6 +178,8 @@ export const TICKER_ITEMS = [
   "Literary Agencies",
   "Book Launches",
   "Signed Editions",
+  "Audiobook Production & Distribution",
+  "Book Distribution",
   "Africa Laureate Awards",
   "Training & Support",
   "Nigeria & Global",
@@ -152,17 +189,17 @@ export const WHY_AUTHOR = [
   {
     num: "01",
     title: "Own your identity online",
-    desc: "Your website is a central hub of authoritative information about you — for readers, journalists and search engines alike. It tells Google and the world precisely who you are.",
+    desc: "It gives you the ability to make it crystal clear to Google and other search engines precisely who you are. Your website is a central hub of information about you, to which both readers and search engines can go for authoritative information."
   },
   {
     num: "02",
     title: "Build direct reader relationships",
-    desc: "A website gives you a flexible platform to engage deeply with readers, gather email sign-ups and build relationships you own. Social platforms can change their rules; your website never will.",
+    desc: " A website gives you a flexible platform from which to engage more deeply with your readers, bloggers and the media. You can use it to gather email signups and only with a website can you reliably and systematically build and own direct relationships. Social media platforms are great but unlike a website you don’t own them and the rules by which they play can change at any time."
   },
   {
     num: "03",
     title: "Give the media somewhere to point",
-    desc: "When journalists, bloggers and publishers write about you, they need somewhere authoritative to link. Your website is that place — and it works 24/7 without you.",
+    desc: "⁠It gives a logical place for anybody (e.g. journalists, publishers, bloggers) write about you, they need somewhere authoritative to link to. Your website is that place — and it works 24/7 without you.",
   },
 ];
 

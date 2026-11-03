@@ -163,9 +163,9 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduceMotion ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              A digital home
+              Hi, welcome to
               <br />
-              for the <em>world of books.</em>
+              BlackQuill <em>Digital Agency</em>
             </motion.h1>
             <Reveal delay={0.12}>
               <p className="home-hero-lede">
@@ -237,15 +237,10 @@ export default function HomePage() {
           </SectionHeading>
           <Reveal delay={0.08}>
             <p className="home-about-lede">
-              BlackQuill Digital Agency is Nigeria&apos;s only agency dedicated to
-              delivering bespoke website and e-commerce projects for authors,
-              publishers, and literary organisations.
+            BlackQuill Digital Agency is Nigeria’s only agency committed to designing bespoke website and e-commerce projects for publishers, authors, literary agents and literary organisations.
             </p>
             <p className="home-body-copy">
-              Our extensive experience — coupled with active participation in
-              industry events like The Africa Laureate Awards — gives us a deep
-              understanding of our clients&apos; unique needs. We move beyond the
-              basics and focus on your strategic objectives.
+            Our extensive experience, coupled with active participation in industry events like The Africa Laureate Awards, ensures we have a deep understanding of our clients’ needs. We can move beyond the basics and focus on your strategic objectives. Based in Nigeria, serving a global client base.
             </p>
             <div className="home-audience-list">
               {AUDIENCES.map((audience) => (
@@ -264,7 +259,7 @@ export default function HomePage() {
         <div className="home-content-width">
           <SectionHeading
             eyebrow="For authors"
-            description="Your website is more than a page online. It gives your work a lasting home and your readers a direct way to find you."
+            description="If you’re reading this you probably have a fairly good idea of why you might need a website already – but here are the three main benefits as we see them:"
           >
             Why does an author need <em>a website?</em>
           </SectionHeading>
@@ -289,9 +284,9 @@ export default function HomePage() {
           <div className="home-services-heading">
             <SectionHeading
               eyebrow="How we help"
-              description="From a distinctive online home to long-term support, we help build a publishing presence that works for you."
+              description="BlackQuill is a only digital agency in Nigeria dedicated to the different projects for publishers,authors and others in the word of books it is specialized in the custom website development we have all rival experience in  meeting the communication needs of publishers and authors in a way that it both execellent  value for money and very easy to use "
             >
-              Thoughtful services for the <em>world of books.</em>
+              Thoughtful services for the <em>world of books</em> why blackquill <em> why should author   choose us</em>
             </SectionHeading>
             <Link to="/services" className="home-button home-button-outline">
               All services <span aria-hidden="true">↗</span>
