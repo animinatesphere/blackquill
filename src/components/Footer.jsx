@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/IMG-20260323-WA0016.jpg";
+import { SERVICES } from "../data";
 export default function Footer() {
   return (
     <footer
@@ -75,19 +76,14 @@ export default function Footer() {
             Services
           </h4>
           <ul className="flex flex-col gap-3">
-            {[
-              "Website Design & Build",
-              "Branding & Design",
-              "E-Commerce",
-              "Training & Support",
-            ].map((l) => (
-              <li key={l}>
+            {SERVICES.map(({ id, label }) => (
+              <li key={id}>
                 <Link
                   to="/services"
                   className="text-sm transition-colors duration-200 hover:text-gold"
                   style={{ color: "rgba(255,255,255,0.4)" }}
                 >
-                  {l}
+                  {label}
                 </Link>
               </li>
             ))}

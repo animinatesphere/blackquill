@@ -88,14 +88,14 @@ export default function PricingPage() {
             The right plan<br /><em>for every author.</em>
           </EditorialSectionHeading>
 
-          {loadError && (
+          {/* {loadError && (
             <div className="ep-pricing-notice" role="status">
               <p>{loadError}</p>
               <button type="button" className="ep-button ep-button-outline" onClick={loadPricing} disabled={loading}>
                 {loading ? "Checking…" : "Retry"}
               </button>
             </div>
-          )}
+          )} */}
 
           {!pricing ? (
             <p className="ep-loading" role="status">Loading current pricing…</p>
@@ -107,7 +107,7 @@ export default function PricingPage() {
                   <span className="ep-plan-kicker">{plan.name}</span>
                   <h3>{plan.tagline}</h3>
                   <div className="ep-plan-price">{formatNaira(plan.amountNGN)}</div>
-                  {formatUsd(plan.amountNGN, usdRate) && <span className="ep-plan-usd">≈ {formatUsd(plan.amountNGN, usdRate)}</span>}
+                  {/* {formatUsd(plan.amountNGN, usdRate) && <span className="ep-plan-usd">≈ {formatUsd(plan.amountNGN, usdRate)}</span>} */}
                   <ul>{plan.features.map((feature) => <li key={feature}><span aria-hidden="true">✳</span>{feature}</li>)}</ul>
                   <Link to="/contact" className={`ep-button ${plan.featured ? "ep-button-primary" : "ep-button-outline"}`}>
                     {plan.cta}<span aria-hidden="true">↗</span>
@@ -175,7 +175,7 @@ export default function PricingPage() {
                       {plans.map((plan) => <td key={plan.id}>{plan.features.includes(feature) ? <span className="ep-check" aria-label={`Included in ${plan.name}`}>✓</span> : <span aria-label="Not included">—</span>}</td>)}
                     </tr>
                   ))}
-                  <tr className="ep-comparison-price"><th scope="row">Price</th>{plans.map((plan) => <td key={plan.id}>{formatNaira(plan.amountNGN)}{formatUsd(plan.amountNGN, usdRate) && <small>≈ {formatUsd(plan.amountNGN, usdRate)}</small>}</td>)}</tr>
+                  <tr className="ep-comparison-price"><th scope="row">Price</th>{plans.map((plan) => <td key={plan.id}>{formatNaira(plan.amountNGN)}</td>)}</tr>
                   <tr className="ep-comparison-action"><th scope="row"><span className="sr-only">Choose plan</span></th>{plans.map((plan) => <td key={plan.id}><Link to="/contact">{plan.cta} ↗</Link></td>)}</tr>
                 </tbody>
               </table>
@@ -197,7 +197,7 @@ export default function PricingPage() {
               <EditorialReveal key={addon.id} delay={index * 0.04} as="article" className="ep-addon-card">
                 <h3>{addon.label}</h3>
                 <strong>{addon.amountNGN === null ? "POA" : `${addon.prefix || ""}${formatNaira(addon.amountNGN)}${addon.suffix || ""}`}</strong>
-                {formatUsd(addon.amountNGN, usdRate) && <small>≈ {addon.prefix || ""}{formatUsd(addon.amountNGN, usdRate)}{addon.suffix || ""}</small>}
+                {/* {formatUsd(addon.amountNGN, usdRate) && <small>≈ {addon.prefix || ""}{formatUsd(addon.amountNGN, usdRate)}{addon.suffix || ""}</small>} */}
               </EditorialReveal>
             ))}
           </div>
@@ -207,7 +207,7 @@ export default function PricingPage() {
       <section className="ep-section ep-section-stone">
         <div className="ep-container ep-faq-layout">
           <EditorialSectionHeading eyebrow="Helpful answers">
-            A few things<br /><em>you might wonder.</em>
+            A few things<br /><em>you might wonder</em> be changed to <em>frequently</em> asked questions
           </EditorialSectionHeading>
           <div className="ep-accordion">
             {FAQ_ITEMS.map((item, index) => {

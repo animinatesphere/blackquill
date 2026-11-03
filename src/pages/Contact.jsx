@@ -4,15 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { PageTransition, Ticker, Reveal, StaggerReveal } from "../components";
 import { submitContact, ApiError } from "../lib/api";
-
-const SERVICES_LIST = [
-  "Website Design & Build",
-  "Branding & Design",
-  "E-Commerce Integration",
-  "Training & Support",
-  "Full Package",
-  "Not sure yet",
-];
+import { SERVICES } from "../data";
 
 const BUDGETS = [
   "Basic — ₦117,000",
@@ -313,7 +305,7 @@ export default function Contact() {
                       Service interested in
                     </label>
                     <div className="flex flex-wrap gap-2">
-                      {SERVICES_LIST.map((s) => (
+                      {[...SERVICES.map(({ label }) => label), "Full Package", "Not sure yet"].map((s) => (
                         <motion.button
                           key={s}
                           type="button"

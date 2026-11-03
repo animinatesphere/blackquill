@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { TICKER_ITEMS } from "../data";
+import { SERVICES, TICKER_ITEMS } from "../data";
 import { ApiError, submitContact } from "../lib/api";
 import {
   EditorialHero,
@@ -9,15 +9,6 @@ import {
   EditorialReveal,
   EditorialTicker,
 } from "../components/EditorialPage";
-
-const SERVICES_LIST = [
-  "Website Design & Build",
-  "Branding & Design",
-  "E-Commerce Integration",
-  "Training & Support",
-  "Full Package",
-  "Not sure yet",
-];
 
 const BUDGETS = [
   "Basic — ₦117,000",
@@ -161,6 +152,22 @@ export default function ContactPage() {
                       />
                       {errors.email && <span className="ep-field-error" id="contact-email-error">{errors.email}</span>}
                     </div>
+
+                     <div className="ep-field">
+                      <label htmlFor="contact-phone">Phone Number <span>*</span></label>
+                      <input
+                        id="contact-phone"
+                        name="number"
+                        type="tel"
+                        autoComplete="tel"
+                        placeholder="e.g. +234 803 123 4567"
+                        value={form.number}
+                        onChange={(event) => updateField("number", event.target.value)}
+                        aria-invalid={Boolean(errors.number)}
+                        aria-describedby={errors.number ? "contact-number-error" : undefined}
+                      />
+                      {errors.number && <span className="ep-field-error" id="contact-number-error">{errors.number}</span>}
+                    </div>
                   </div>
 
                   <div className="ep-field">
@@ -178,8 +185,8 @@ export default function ContactPage() {
 
                   <fieldset className="ep-choice-field">
                     <legend>Service interested in</legend>
-                    <div className="ep-choice-list">
-                      {SERVICES_LIST.map((service) => (
+                    <div className="ep-choice-list ep-service-choices">
+                      {[...SERVICES.map(({ label }) => label), "Full Package", "Not sure yet"].map((service) => (
                         <button
                           key={service}
                           type="button"
@@ -195,7 +202,7 @@ export default function ContactPage() {
 
                   <fieldset className="ep-choice-field">
                     <legend>Budget / Plan</legend>
-                    <div className="ep-choice-list">
+                    <div className="ep-choice-list ep-budget-choices">
                       {BUDGETS.map((budget) => (
                         <button
                           key={budget}

@@ -2071,13 +2071,46 @@
     gap: 20px;
   }
 
-  .ep-choice-list {
+  .ep-contact-form-wrap,
+  .ep-contact-form,
+  .ep-contact-form > *,
+  .ep-contact-sidebar,
+  .ep-contact-sidebar > * {
+    min-width: 0;
+  }
+
+  .ep-form-heading h2,
+  .ep-contact-card h3,
+  .ep-contact-quote blockquote,
+  .ep-audience-item strong,
+  .ep-audience-item small,
+  .ep-contact-form label,
+  .ep-choice-field legend {
+    overflow-wrap: anywhere;
+  }
+
+  .ep-service-choices,
+  .ep-budget-choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
 
   .ep-choice {
-    padding-inline: 9px;
-    font-size: 8px;
+    min-width: 0;
+    min-height: 38px;
+    padding: 8px 9px;
+    font-size: 9px;
+    line-height: 1.35;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: flex-start;
+  }
+
+  .ep-contact-card > a {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .ep-contact-sidebar {
